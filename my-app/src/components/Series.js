@@ -42,10 +42,13 @@ class Series extends Component {
 
 const DivStyle={
   display:"flex",
-  flexDirection:"column"
+  flexDirection:"column",
+  
 }
 const DivStyle1={
   display:"flex",
-  flexDirection:"row"
+  flexDirection:"row",
+  justifyContent:"center",
+  
 }
 export default Series;

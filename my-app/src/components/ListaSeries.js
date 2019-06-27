@@ -9,9 +9,10 @@ class ListaSeries extends Component {
 
           <div style={DivStyle}>
             <button>
-              <p style={pStyle}> {serie.nome} </p>
+              <p className="cenas" style={pStyle}> {serie.nome} </p>
               <img style={imgStyle} key={serie.id} src={"Imagens/"+serie.foto} alt="P"></img>
-              <p style={pStyle}>{serie.nome} </p>
+              <p>Classificação</p>
+              <p style={pStyle}>{serie.classificacao} </p>
             </button>
           </div>
 
@@ -26,13 +27,16 @@ const DivStyle = {
   flexDirection: "column",
   width: "fit-content",
   height: "fit-content",
-  margin:"20px"
+  margin:"20px",
+  justifyContent:"center",
+  boxShadow: "3px 3px 5px grey"
 }
 
 const imgStyle = {
-  width: "150px",
-  height: "150px",
-  margin: "10px"
+  width: "250px",
+  height: "250px",
+  margin: "10px",
+  
 }
 
 const pStyle = {
