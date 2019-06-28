@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Series from './Series';
-import Temporadas from './Temporadas';
-import Episodios from './Episodios';
+import Editoras from './Editoras';
+import Pessoas from './Pessoas';
 import '../Style/Header.css';
 
 
@@ -24,15 +24,15 @@ class Header extends Component {
               <nav>
                 <ul>
                   <li><Link style={{textDecoration: "none",color:"black",flex:1}} to="/Series">Séries</Link></li>
-                  <li><Link style={{textDecoration: "none",color:"black",flex:1}} to="/Temporadas">Temporadas</Link></li>
-                  <li><Link style={{textDecoration: "none",color:"black",flex:1}} to="/Episodios">Episódios</Link></li>
+                  <li><Link style={{textDecoration: "none",color:"black",flex:1}} to="/Editoras">Editoras</Link></li>
+                  <li><Link style={{textDecoration: "none",color:"black",flex:1}} to="/Pessoas">Pessoas</Link></li>
                 </ul>
               </nav>
             </div>
           </div >
-          <Route path="/Temporadas/" component={Temporadas} />
+          <Route path="/Editoras/" component={Editoras} />
           <Route path="/Series/" component={Series} />
-          <Route path="/Episodios/" component={Episodios} />
+          <Route path="/Pessoas/" component={Pessoas} />
         </Router>
 
 

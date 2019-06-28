@@ -12,7 +12,7 @@ class Series extends Component {
 
 
   componentDidMount() {
-    fetch('https://localhost:5001/api/values/Series')
+    fetch('http://localhost:5000/api/values/Series')
       .then(res => res.json())
       .then((data) => {
         this.setState({
