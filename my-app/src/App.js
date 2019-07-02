@@ -30,8 +30,6 @@ state={
     <Route path="/Episodios" component={Episodios}></Route>
     <Route path="/Editoras" component={Editoras}></Route>
     <Route path="/Pessoas" component={Pessoas}></Route>
-
-
 </Router>
 
 

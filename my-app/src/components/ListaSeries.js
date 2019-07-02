@@ -3,16 +3,9 @@ import { BrowserRouter as Router,Route, Link } from "react-router-dom";
 import Temporadas from './Temporadas';
 
 class ListaSeries extends Component {
-
   render() {
-
-    
-
-    return (
-  
-        
-        this.props.serie.map((serie) => (
-              
+    return (       
+        this.props.serie.map((serie) => (             
             <Link style={{textDecoration: "none",color:"black",flex:1}} to={`/Temporadas/${serie.id}`}
               onClick={this.handleClick}>
               <p className="cenas" style={pStyle}> {serie.nome} </p>
@@ -22,25 +15,10 @@ class ListaSeries extends Component {
               <p>Género</p>
               <p style={pStyle}>{serie.Genero} </p>
             </Link>     
-        )
-      
-      
+        )      
       )
     )
   }
-}
-
-
-const DivStyle = {
-  display: "flex",
-  background: '#909090',
-  flexDirection: "column",
-  width: "fit-content",
-  height: "fit-content",
-  margin:"20px",
-  justifyContent:"center",
-  boxShadow: "3px 3px 5px grey",
-  textDecoration:"none"
 }
 
 const imgStyle = {
