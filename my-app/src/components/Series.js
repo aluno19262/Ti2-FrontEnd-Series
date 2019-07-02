@@ -7,9 +7,9 @@ class Series extends Component {
   state = {
     isLoaded: false,
     serie: null,
-    valor:"Séries"
+    valor:"Séries",
+    
   }
-
 
   componentDidMount() {
     fetch('http://localhost:5000/api/values/Series')
@@ -24,17 +24,23 @@ class Series extends Component {
 
       .catch(console.log)
   }
+ 
   render() {
+    
+
     if (!this.state.isLoaded) {
       return <div>Loading...</div>
     } else {
       return (
-        <div style={DivStyle}>
-          <div style={DivStyle1}>
-            <ListaSeries key={"serie" + this.state.serie.id} serie={this.state.serie} ></ListaSeries>
+       
+          <div style={DivStyle}>
+            <div style={DivStyle1}>
+              <ListaSeries key={"serie" + this.state.serie.id} 
+                serie={this.state.serie} onClick={this.onClick}>
+              </ListaSeries>
+            </div>        
           </div>
-          
-        </div>
+           
       );
     }
   }

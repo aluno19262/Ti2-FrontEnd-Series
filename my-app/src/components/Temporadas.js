@@ -4,14 +4,24 @@ import ListaTemporadas from './ListaTemporadas';
 
 
 class Temporadas extends Component {
-  state = {
+  constructor(props){
+    super(props);
+  this.state = {
     isLoaded: false,
     temporada: null,
+  
+    };
   }
 
 
+
+
+  componentWillMount(){
+    console.log("Aqui!!!");
+  }
+
   componentDidMount() {
-    fetch('https://localhost:5001/api/values/Temporadas')
+    fetch('https://localhost:5001/api/values/Temporadas/'+this.props.match.params.id)
       .then(res => res.json())
       .then((data) => {
         this.setState({

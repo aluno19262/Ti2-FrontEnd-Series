@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Ti2_Andre_API.Models;
 
@@ -42,9 +43,9 @@ namespace Ti2_Andre_API.Controllers
             return Ok(serie);
         }
         // GET api/values
-        [HttpGet("Temporadas")]
+        [HttpGet("Temporadas/{id}")]
         [Produces("application/json")]
-        public ActionResult GetTemporadas()
+        public ActionResult GetTemporadas(int? id)
         {
             List<Temporadas> temporada = new List<Temporadas>{
                             //Mr.Robot
@@ -76,7 +77,7 @@ namespace Ti2_Andre_API.Controllers
                new Temporadas {ID=22, Numero=7,Nome="GameOfThronesS07",Foto="GameOfThronesS07.jpg",Trailer="giYeaKsXnsI", SerieFK=5},
                new Temporadas {ID=23, Numero=8,Nome="GameOfThronesS08",Foto="GameOfThronesS08.jpg",Trailer="rlR4PJn8b8I", SerieFK=5},
             };
-            return Ok(temporada);
+            return Ok(temporada.Where( t => t.SerieFK==id));
         }
 
         // GET api/values
