@@ -1,0 +1,63 @@
+.episodios_details_wrapper{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.episodios_details_content_wrapper{
+    display:flex;
+    flex-direction: row;
+    width: 80%;
+    margin:auto;
+    border:1px solid black;
+    border-radius:8px;
+    box-shadow: 3px 3px yellow;
+    background-color: goldenrod;
+    
+}
+
+.episodios_details_content_img{
+    width:33.33%;
+    height: 300px;
+}
+
+.episodios_details_content_img img{
+    width:100% ;
+    
+}
+
+.episodios_details_content_info_wrapper{
+    width:66.66%;
+    margin:16px;
+}
+
+.episodios_details_content_info_nome{
+    height: 10%;
+}
+
+.episodios_details_content_info_classificacao{
+    height: 10%;
+}
+
+.episodios_details_content_info_sinopse{
+    height: 80%;
+}
+
+.episodios_details_trailer{
+    padding-top:24px;
+    padding-bottom:24px;
+    display: flex;
+    justify-content: center;
+}
+
+.episodios_details_trailer iframe{
+    display: flex;
+    justify-content: center;
+    min-width: 300px;
+    width: 600px;
+    min-height: 300px;
+    height:  400px;
+}
+div p{
+    font-size:20px;
+}

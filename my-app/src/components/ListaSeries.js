@@ -4,6 +4,7 @@ import Temporadas from './Temporadas';
 
 class ListaSeries extends Component {
   render() {
+    console.log(this.props.serie)
     return (       
         this.props.serie.map((serie) => (             
             <Link style={{textDecoration: "none",color:"black",flex:1}} to={`/Temporadas/${serie.id}`}>

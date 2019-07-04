@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { BrowserRouter as Router,Route, Link } from "react-router-dom";
 
 
 class ListaEpisodios extends Component {
@@ -12,7 +12,7 @@ class ListaEpisodios extends Component {
       );
     }else{
       return this.props.episodio.map((episodio) => (
-
+<Link to={`/EpisodiosDetails/${episodio.id}`}>
           <div style={DivStyle}>
             <button>
               <p style={pStyle}> {episodio.nome} </p>
@@ -20,6 +20,8 @@ class ListaEpisodios extends Component {
               <p style={pStyle}>{episodio.nome} </p>
             </button>
           </div>
+</Link>
+          
 
     ));
     }

@@ -13,13 +13,6 @@ class Temporadas extends Component {
     };
   }
 
-
-
-
-  componentWillMount(){
-    console.log("Aqui!!!");
-  }
-
   componentDidMount() {
     fetch('https://localhost:5001/api/values/Temporadas/'+this.props.match.params.id)
       .then(res => res.json())

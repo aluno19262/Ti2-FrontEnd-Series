@@ -5,13 +5,14 @@ import { BrowserRouter as Router,Route, Link } from "react-router-dom";
 class ListaTemporadas extends Component {
 
   render() {
-
+console.log(this.props.temporada)
     return this.props.temporada.map((temporada) => (
+      
 <Link to={`/Episodios/${temporada.id}`}>
           <div style={DivStyle}>
             <button>
               <p style={pStyle}> {temporada.nome} </p>
-              <img style={imgStyle} key={temporada.id} src={"Imagens/"+temporada.foto} alt="P"></img>
+              <img style={imgStyle} key={temporada.id} src={'Imagens/'+temporada.foto} alt="P"></img>
               <p style={pStyle}>{temporada.nome} </p>
             </button>
           </div>
