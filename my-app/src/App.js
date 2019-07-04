@@ -27,7 +27,7 @@ state={
 
     <Route path="/Series" component={Series}></Route> 
     <Route path="/Temporadas/:id" component={Temporadas}></Route>    
-    <Route path="/Episodios" component={Episodios}></Route>
+    <Route path="/Episodios/:id" component={Episodios}></Route>
     <Route path="/Editoras" component={Editoras}></Route>
     <Route path="/Pessoas" component={Pessoas}></Route>
 </Router>

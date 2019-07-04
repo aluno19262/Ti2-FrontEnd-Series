@@ -6,8 +6,7 @@ class ListaSeries extends Component {
   render() {
     return (       
         this.props.serie.map((serie) => (             
-            <Link style={{textDecoration: "none",color:"black",flex:1}} to={`/Temporadas/${serie.id}`}
-              onClick={this.handleClick}>
+            <Link style={{textDecoration: "none",color:"black",flex:1}} to={`/Temporadas/${serie.id}`}>
               <p className="cenas" style={pStyle}> {serie.nome} </p>
               <img style={imgStyle} key={serie.id} src={"Imagens/"+serie.foto} alt="P"></img>
               <p>Classificação</p>

@@ -5,7 +5,13 @@ import React, { Component } from 'react';
 class ListaEpisodios extends Component {
 
   render() {
-    return this.props.episodio.map((episodio) => (
+    console.log(this.props.episodio.lenght);
+    if(this.props.episodio.lenght===0){
+      return(
+        <p>Não existem episodios para esta temporada</p>
+      );
+    }else{
+      return this.props.episodio.map((episodio) => (
 
           <div style={DivStyle}>
             <button>
@@ -16,6 +22,8 @@ class ListaEpisodios extends Component {
           </div>
 
     ));
+    }
+    
   }
 }
 

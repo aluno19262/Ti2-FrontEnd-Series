@@ -81,9 +81,9 @@ namespace Ti2_Andre_API.Controllers
         }
 
         // GET api/values
-        [HttpGet("Episodios")]
+        [HttpGet("Episodios/{id}")]
         [Produces("application/json")]
-        public ActionResult GetEpisodios()
+        public ActionResult GetEpisodios(int? id)
         {
             List<Episodios> episodio = new List<Episodios>
             {
@@ -219,7 +219,7 @@ namespace Ti2_Andre_API.Controllers
                             " um pirata, para unir forças com Stannis e Melisandre para uma " +
                             "invasão naval de King's Landing.",Foto="GameOfThronesT02E02.jpg",Trailer="",Classificacao=8.6, TemporadaFK=17},
             };
-            return Ok(episodio);
+            return Ok(episodio.Where(i => i.TemporadaFK == id));
         }
 
         // GET api/values

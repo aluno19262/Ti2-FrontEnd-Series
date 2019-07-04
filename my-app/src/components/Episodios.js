@@ -11,7 +11,7 @@ class Episodios extends Component {
 
 
   componentDidMount() {
-    fetch('https://localhost:5001/api/values/Episodios')
+    fetch('https://localhost:5001/api/values/Episodios/'+this.props.match.params.id)
       .then(res => res.json())
       .then((data) => {
         this.setState({

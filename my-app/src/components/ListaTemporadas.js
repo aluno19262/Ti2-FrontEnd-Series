@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router,Route, Link } from "react-router-dom";
 
 
-class ListaSeries extends Component {
+class ListaTemporadas extends Component {
 
   render() {
 
     return this.props.temporada.map((temporada) => (
-
+<Link to={`/Episodios/${temporada.id}`}>
           <div style={DivStyle}>
             <button>
               <p style={pStyle}> {temporada.nome} </p>
@@ -15,7 +15,7 @@ class ListaSeries extends Component {
               <p style={pStyle}>{temporada.nome} </p>
             </button>
           </div>
-
+</Link>
     ));
   }
 }
@@ -39,4 +39,4 @@ const imgStyle = {
 const pStyle = {
   textAlign: "center"
 }
-export default ListaSeries;
+export default ListaTemporadas;

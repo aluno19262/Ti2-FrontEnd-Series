@@ -36,7 +36,7 @@ class Series extends Component {
           <div style={DivStyle}>
             <div style={DivStyle1}>
               <ListaSeries key={"serie" + this.state.serie.id} 
-                serie={this.state.serie} onClick={this.onClick}>
+                serie={this.state.serie}>
               </ListaSeries>
             </div>        
           </div>
