@@ -40,7 +40,7 @@ if (!this.state.isLoaded) {
         <div className="episodios_details_wrapper">
             <div className="episodios_details_content_wrapper"> 
                 <div className="episodios_details_content_img">
-                    <img style={{width:"150px",height:"150px"}} src={"Imagens/"+this.state.episodioDetalhes[0].foto} alt="p"></img>
+                    <img src={"../Imagens/"+this.state.episodioDetalhes[0].foto} alt=""></img>
                 </div>
                 <div className="episodios_details_content_info_wrapper">
                     <div className="episodios_details_content_info_nome">
@@ -55,6 +55,7 @@ if (!this.state.isLoaded) {
                 </div>
             </div>
             <div className="episodios_details_trailer">
+              <p>Trailer</p>
                 <iframe src={"https://www.youtube.com/embed/"+this.state.episodioDetalhes[0].trailer} title={this.state.episodioDetalhes[0].id} allowfullscreen></iframe>
             </div>
         </div>

@@ -11,19 +11,22 @@
     margin:auto;
     border:1px solid black;
     border-radius:8px;
-    box-shadow: 3px 3px yellow;
+    box-shadow: 3px 3px 0 1px goldenrod;
     background-color: goldenrod;
-    
+    height:100%;
 }
 
 .episodios_details_content_img{
     width:33.33%;
-    height: 300px;
+    height: 100%;
+    align-self: center;
+    padding: 16px;
+    position: relative;
 }
 
 .episodios_details_content_img img{
-    width:100% ;
-    
+    height:100%;
+    width: 300px;
 }
 
 .episodios_details_content_info_wrapper{
@@ -47,7 +50,12 @@
     padding-top:24px;
     padding-bottom:24px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.episodios_details_trailer p{
+    font-size:30px;
 }
 
 .episodios_details_trailer iframe{

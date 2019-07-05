@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ListaEditoras from './ListaEditoras';
 
-
+import '../Style/wrapper.css';
 
 class Editoras extends Component {
   state = {
@@ -28,7 +28,7 @@ class Editoras extends Component {
       return <div>Loading...</div>
     } else {
       return (
-        <div style={DivStyle}>
+        <div>
             <ListaEditoras key={"serie" + this.state.editora.id} editora={this.state.editora} ></ListaEditoras>          
         </div>
       );
@@ -36,10 +36,5 @@ class Editoras extends Component {
   }
 }
 
-const DivStyle={
-  display:"flex",
-  flexDirection:"row",
-  flexWrap:"wrap"
-}
 
 export default Editoras;

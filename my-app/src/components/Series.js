@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import ListaSeries from './ListaSeries';
 
+import '../Style/wrapper.css';
 
+export const linkApi = "http://localhost:5000"
 
 class Series extends Component {
   state = {
@@ -12,7 +14,7 @@ class Series extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:5000/api/values/Series')
+    fetch(linkApi + '/api/values/Series')
       .then(res => res.json())
       .then((data) => {
         this.setState({
@@ -33,8 +35,8 @@ class Series extends Component {
     } else {
       return (
        
-          <div style={DivStyle}>
-            <div style={DivStyle1}>
+          <div className="wp">
+            <div className="_wrapper">
               <ListaSeries key={"serie" + this.state.serie.id} 
                 serie={this.state.serie}>
               </ListaSeries>
@@ -46,15 +48,4 @@ class Series extends Component {
   }
 }
 
-const DivStyle={
-  display:"flex",
-  flexDirection:"column",
-  
-}
-const DivStyle1={
-  display:"flex",
-  flexDirection:"row",
-  justifyContent:"center",
-  
-}
 export default Series;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ListaEpisodios from './ListaEpisodios';
 
-
+import '../Style/wrapper.css';
 
 class Episodios extends Component {
   state = {
@@ -28,7 +28,7 @@ class Episodios extends Component {
       return <div>Loading...</div>
     } else {
       return (
-        <div style={DivStyle}>
+        <div>
             <ListaEpisodios key={"serie" + this.state.episodio.id} episodio={this.state.episodio} ></ListaEpisodios>          
         </div>
       );
@@ -36,10 +36,5 @@ class Episodios extends Component {
   }
 }
 
-const DivStyle={
-  display:"flex",
-  flexDirection:"row",
-  flexWrap:"wrap"
-}
 
 export default Episodios;

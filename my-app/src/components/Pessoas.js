@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ListaPessoas from './ListaPessoas';
 
-
+import '../Style/wrapper.css';
 
 class Pessoas extends Component {
   state = {
@@ -28,7 +28,7 @@ class Pessoas extends Component {
       return <div>Loading...</div>
     } else {
       return (
-        <div style={DivStyle}>
+        <div>
             <ListaPessoas key={"serie" + this.state.pessoa.id} pessoa={this.state.pessoa} ></ListaPessoas>          
         </div>
       );
@@ -36,10 +36,5 @@ class Pessoas extends Component {
   }
 }
 
-const DivStyle={
-  display:"flex",
-  flexDirection:"row",
-  flexWrap:"wrap"
-}
 
 export default Pessoas;

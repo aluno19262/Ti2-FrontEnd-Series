@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import ListaTemporadas from './ListaTemporadas';
 
-
+import '../Style/temporadas.css';
+import '../Style/wrapper.css';
 
 class Temporadas extends Component {
   constructor(props){
@@ -31,7 +32,7 @@ class Temporadas extends Component {
       return <div>Loading...</div>
     } else {
       return (
-        <div style={DivStyle}>
+        <div>
             <ListaTemporadas key={"serie" + this.state.temporada.id} temporada={this.state.temporada} ></ListaTemporadas>          
         </div>
       );
@@ -39,9 +40,4 @@ class Temporadas extends Component {
   }
 }
 
-const DivStyle={
-  display:"flex",
-  flexDirection:"row",
-  flexWrap:"wrap"
-}
 export default Temporadas;
