@@ -14,7 +14,7 @@ import Pessoas from './components/Pessoas';
 class App extends Component {
   
 state={
-  valor:"HOME"
+  valor:"🏠"
 }
 
   render(){

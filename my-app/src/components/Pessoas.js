@@ -28,9 +28,14 @@ class Pessoas extends Component {
       return <div>Loading...</div>
     } else {
       return (
-        <div>
-            <ListaPessoas key={"serie" + this.state.pessoa.id} pessoa={this.state.pessoa} ></ListaPessoas>          
+        <div className="wp">
+          <div className="_wrapper">
+            <div className="size">
+              <ListaPessoas key={"serie" + this.state.pessoa.id} pessoa={this.state.pessoa} ></ListaPessoas>
+            </div>
+          </div>
         </div>
+
       );
     }
   }

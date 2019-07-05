@@ -15,8 +15,8 @@ class Header extends Component {
         
           <div style={{width:"100%" , height:"300px",margin: 0,
 	padding: 0}}>
-            <div>
-              <Link style={{textDecoration:"none",color:"white",fontSize:"30px"}} to="/">{this.props.valor}</Link>
+            <div className="home_btn">
+              <Link to="/">{this.props.valor}</Link>
             </div>
             <div style={Dstyle}>
               <nav>

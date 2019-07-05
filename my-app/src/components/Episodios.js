@@ -11,7 +11,7 @@ class Episodios extends Component {
 
 
   componentDidMount() {
-    fetch('https://localhost:5001/api/values/Episodios/'+this.props.match.params.id)
+    fetch('https://localhost:5001/api/values/Episodios/' + this.props.match.params.id)
       .then(res => res.json())
       .then((data) => {
         this.setState({
@@ -28,8 +28,10 @@ class Episodios extends Component {
       return <div>Loading...</div>
     } else {
       return (
-        <div>
-            <ListaEpisodios key={"serie" + this.state.episodio.id} episodio={this.state.episodio} ></ListaEpisodios>          
+        <div className="wp">
+          <div className="_wrapper">
+            <ListaEpisodios key={"serie" + this.state.episodio.id} episodio={this.state.episodio} ></ListaEpisodios>
+          </div>
         </div>
       );
     }

@@ -28,8 +28,10 @@ class Editoras extends Component {
       return <div>Loading...</div>
     } else {
       return (
-        <div>
-            <ListaEditoras key={"serie" + this.state.editora.id} editora={this.state.editora} ></ListaEditoras>          
+        <div className="wp">
+          <div className="_wrapper">
+            <ListaEditoras key={"serie" + this.state.editora.id} editora={this.state.editora} ></ListaEditoras>
+          </div>
         </div>
       );
     }

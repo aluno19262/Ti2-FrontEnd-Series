@@ -6,10 +6,16 @@ class ListaPessoas extends Component {
 
   render() {
     return this.props.pessoa.map((pessoa) => (
-          <div>
-              <p> {pessoa.nome} </p>
-              <img key={pessoa.id} src={"Imagens/"+pessoa.foto} alt="P"></img>
-              <p>{pessoa.nome} </p>
+          <div className="pessoas_wrapper">
+            <div className="pessoas_container">
+              <div className="pessoas_img">
+                <img key={pessoa.id} src={"Imagens/"+pessoa.foto} alt="P"></img>
+              </div>
+              <div className="pessoas_nome">
+                <p>{pessoa.nome} </p>
+              </div>
+            </div>
+              
           </div>
     ));
   }

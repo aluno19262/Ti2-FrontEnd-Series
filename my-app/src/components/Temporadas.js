@@ -32,9 +32,12 @@ class Temporadas extends Component {
       return <div>Loading...</div>
     } else {
       return (
-        <div>
+        <div className="wp">
+                  <div className="_wrapper">
             <ListaTemporadas key={"serie" + this.state.temporada.id} temporada={this.state.temporada} ></ListaTemporadas>          
         </div>
+        </div>
+
       );
     }
   }

@@ -3,10 +3,18 @@
     flex-direction: row;
     flex-wrap: wrap;
     width:80%;
-    margin:auto;
+    
     /* padding: 32px; */
 }
 .wp{
     display:flex;
+    justify-content: center;
+}
+.size{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    flex-wrap:wrap;
     justify-content: center;
 }
