@@ -28,13 +28,17 @@ class Pessoas extends Component {
       return <div>Loading...</div>
     } else {
       return (
-        <div className="wp">
-          <div className="_wrapper">
-            <div className="size">
-              <ListaPessoas key={"serie" + this.state.pessoa.id} pessoa={this.state.pessoa} ></ListaPessoas>
+        <React.Fragment>
+          <p className="title">Lista de Pessoas</p>
+          <div className="wp">
+            <div className="_wrapper">
+              <div className="size">
+                <ListaPessoas key={"serie" + this.state.pessoa.id} pessoa={this.state.pessoa} ></ListaPessoas>
+              </div>
             </div>
           </div>
-        </div>
+        </React.Fragment>
+
 
       );
     }

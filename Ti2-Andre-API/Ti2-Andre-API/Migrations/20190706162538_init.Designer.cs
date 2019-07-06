@@ -8,7 +8,7 @@ using Ti2_Andre_API.Models;
 namespace Ti2_Andre_API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190705143930_init")]
+    [Migration("20190706162538_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

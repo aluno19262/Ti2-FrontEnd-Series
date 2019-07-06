@@ -52,16 +52,12 @@ namespace Ti2_Andre_API.Controllers
         }
 
         // GET api/values
-        [HttpGet("Comentarios")]
+        [HttpGet("Comentarios/{id}")]
         [Produces("application/json")]
-        public ActionResult GetComentarios()
+        public ActionResult GetComentarios(int? id)
         {
-            List<Comentarios> comentario = new List<Comentarios>
-            {
-               new Comentarios {ID=1,Texto="Não gostei muito deste episódio",EpisodioFK=1},
-               new Comentarios {ID=2,Texto="Gostei muito",EpisodioFK=2},
-            };
-            return Ok(comentario);
+
+            return Ok(db.Comentarios.Where(i => i.EpisodioFK == id));
         }
 
         // GET api/values
@@ -92,7 +88,32 @@ namespace Ti2_Andre_API.Controllers
         }
 
 
+        //---------------------Post-----------------------
+        [HttpPost]
+        public IActionResult CreateComment([FromForm] Comentarios comentario)
+        {
+            // Guardar o agente na BD.
+            var novoComentario = new Comentarios
+            {
+                Texto = comentario.Texto,
+                EpisodioFK = comentario.EpisodioFK,
+            };
 
+            db.Comentarios.Add(novoComentario);
+
+            db.SaveChanges();
+
+            var resultado = new
+            {
+                novoComentario.ID,
+                novoComentario.Texto,
+                novoComentario.EpisodioFK
+            };
+
+
+            return Ok(resultado);
+        }
+        //------------------------------------------------
 
 
 

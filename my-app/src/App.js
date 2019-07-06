@@ -8,6 +8,7 @@ import Episodios from './components/Episodios';
 import EpisodiosDetails from './components/EpisodiosDetails';
 import Editoras from './components/Editoras';
 import Pessoas from './components/Pessoas';
+import Papeis from './components/Papeis';
 
 
 
@@ -24,6 +25,7 @@ state={
       <div className="App">
       <Header valor={this.state.valor}></Header>   
     </div>
+
 
 
     <Route path="/Series" component={Series}></Route> 

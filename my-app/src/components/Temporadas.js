@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ListaTemporadas from './ListaTemporadas';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import '../Style/temporadas.css';
 import '../Style/wrapper.css';
@@ -32,11 +33,19 @@ class Temporadas extends Component {
       return <div>Loading...</div>
     } else {
       return (
+        <React.Fragment>
+                  <p className="title">Lista de Temporadas</p>
         <div className="wp">
                   <div className="_wrapper">
             <ListaTemporadas key={"serie" + this.state.temporada.id} temporada={this.state.temporada} ></ListaTemporadas>          
         </div>
+        
         </div>
+        <Link to="/Series">
+          <span className="voltarAtras">Voltar à Lista de Séries</span>
+        </Link>
+        </React.Fragment>
+
 
       );
     }

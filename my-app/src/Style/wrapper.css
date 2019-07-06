@@ -3,8 +3,6 @@
     flex-direction: row;
     flex-wrap: wrap;
     width:80%;
-    
-    /* padding: 32px; */
 }
 .wp{
     display:flex;
@@ -17,4 +15,45 @@
     height: 100%;
     flex-wrap:wrap;
     justify-content: center;
+}
+
+.title{
+    text-align: center;
+    font-size:50px;
+    font-weight: bold;
+    padding: 16px;
+    margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 32px;
+    width: fit-content;
+    height: fit-content;
+    background-color: goldenrod;
+    border:1px solid black;
+    box-shadow: 3px 3px black;
+    border-radius: 8px;
+    display:flex;
+    justify-items: center;
+}
+
+.voltarAtras{
+    float: right;
+    margin-bottom:24px;
+    margin-right:24px;
+    font-size :16px;
+    background-color:goldenrod;
+    padding:16px;
+    border-radius:30px;
+    border:1px solid black;
+    box-shadow: 3px 3px black;
+    color:black;
+}
+
+.voltarAtras:hover{
+    box-shadow: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+a{
+    text-decoration: none;
 }

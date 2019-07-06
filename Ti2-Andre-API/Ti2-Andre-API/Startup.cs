@@ -14,7 +14,7 @@ namespace Ti2_Andre_API
     {
         public Startup(IConfiguration configuration)
         {
-            
+
             Configuration = configuration;
         }
 
@@ -32,7 +32,7 @@ namespace Ti2_Andre_API
             );
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddMvc();
-           
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,7 +50,7 @@ namespace Ti2_Andre_API
             }
 
             app.UseStaticFiles();
-            
+
             app.UseCors(corsOptions =>
             {
                 corsOptions.AllowAnyHeader();
@@ -86,7 +86,7 @@ namespace Ti2_Andre_API
                 foreach (var e in editora)
                 {
                     db.Editoras.Add(e);
-                } 
+                }
             }
 
             if (!db.Pessoas.Any())
@@ -122,7 +122,7 @@ namespace Ti2_Andre_API
                 foreach (var p in pessoa)
                 {
                     db.Pessoas.Add(p);
-                } 
+                }
             }
 
             if (!db.Episodios.Any())
@@ -265,7 +265,7 @@ namespace Ti2_Andre_API
                 foreach (var e in episodio)
                 {
                     db.Episodios.Add(e);
-                } 
+                }
             }
 
             if (!db.PessoasEpisodios.Any())
@@ -283,7 +283,7 @@ namespace Ti2_Andre_API
                 foreach (var e in pessoasEpisodios)
                 {
                     db.PessoasEpisodios.Add(e);
-                } 
+                }
             }
 
 
@@ -324,7 +324,7 @@ namespace Ti2_Andre_API
                 foreach (var t in temporada)
                 {
                     db.Temporadas.Add(t);
-                } 
+                }
             }
 
             if (!db.Series.Any())
@@ -358,7 +358,19 @@ namespace Ti2_Andre_API
                 foreach (var s in serie)
                 {
                     db.Series.Add(s);
-                } 
+                }
+            }
+
+            if (!db.Comentarios.Any())
+            {
+                List<Comentarios> comentario = new List<Comentarios>{
+                    new Comentarios {ID=1,Texto="Não gostei muito deste episódio",EpisodioFK=1},
+                    new Comentarios {ID=2,Texto="Gostei muito",EpisodioFK=2},
+            };
+                foreach (var c in comentario)
+                {
+                    db.Comentarios.Add(c);
+                }
             }
 
             db.SaveChanges();

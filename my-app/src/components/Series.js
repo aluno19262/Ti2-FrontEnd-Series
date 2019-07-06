@@ -34,7 +34,8 @@ class Series extends Component {
       return <div>Loading...</div>
     } else {
       return (
-       
+        <React.Fragment>
+          <p className="title">Lista de Séries</p>
           <div className="wp">
             <div className="_wrapper">
               <ListaSeries key={"serie" + this.state.serie.id} 
@@ -42,7 +43,7 @@ class Series extends Component {
               </ListaSeries>
             </div>        
           </div>
-           
+        </React.Fragment>    
       );
     }
   }
