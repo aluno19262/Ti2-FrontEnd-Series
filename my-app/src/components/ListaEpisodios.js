@@ -21,7 +21,7 @@ class ListaEpisodios extends Component {
                 <span> Episódio {episodio.numero} </span>
               </div>
               <div className="episodios_content_img">
-                <img key={episodio.id} src={"../Imagens/" + episodio.foto} alt="../Imagens/ALT.png"></img>
+                <img key={episodio.id} src={"../Imagens/" + episodio.foto} alt="Não existe foto"></img>
               </div>
               <div className="episodios_content_nome">
                 <span>{episodio.nome} </span>

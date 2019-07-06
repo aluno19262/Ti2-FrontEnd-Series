@@ -13,7 +13,7 @@ class Header extends Component {
 
       return (
         
-          <div style={{width:"100%" , height:"300px",margin: 0,
+          <div style={{width:"100%" ,margin: 0,
 	padding: 0}}>
             <div className="home_btn">
               <Link to="/">{this.props.valor}</Link>
