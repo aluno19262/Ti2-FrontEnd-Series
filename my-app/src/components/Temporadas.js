@@ -8,7 +8,8 @@ import '../Style/wrapper.css';
 class Temporadas extends Component {
   constructor(props){
     super(props);
-  this.state = {
+  this.state = { 
+    id:null,
     isLoaded: false,
     temporada: null,
   
@@ -20,6 +21,7 @@ class Temporadas extends Component {
       .then(res => res.json())
       .then((data) => {
         this.setState({
+          id:this.props.match.params.id,
           isLoaded: true,
           temporada: data
         })
@@ -29,6 +31,7 @@ class Temporadas extends Component {
       .catch(console.log)
   }
   render() {
+    console.log(this.state.id)
     if (!this.state.isLoaded) {
       return <div>Loading...</div>
     } else {
@@ -37,7 +40,8 @@ class Temporadas extends Component {
                   <p className="title">Lista de Temporadas</p>
         <div className="wp">
                   <div className="_wrapper">
-            <ListaTemporadas key={"serie" + this.state.temporada.id} temporada={this.state.temporada} ></ListaTemporadas>          
+              
+            <ListaTemporadas key={"serie" + this.state.temporada.id} temporada={this.state.temporada} serie={this.state.id}></ListaTemporadas>          
         </div>
         
         </div>

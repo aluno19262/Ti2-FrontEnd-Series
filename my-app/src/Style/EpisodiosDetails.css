@@ -97,6 +97,8 @@ div p{
     border-radius: 16px;
     margin-bottom: 16px;
     display:flex;
+    flex-direction:column;
+    align-items: center;
     justify-content: center;
 }
 
@@ -138,5 +140,19 @@ background-color: rgba(0,0,255,0.4);
 
 }
 
+.comentario{
+    display:flex;
+    flex-direction: row;
+    width: 90%;
+}
+
+.comentario span{
+    font-size:20px;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    margin-left: 24px;
+    cursor:pointer;
+}
 
 

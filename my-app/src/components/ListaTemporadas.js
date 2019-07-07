@@ -7,11 +7,12 @@ import '../Style/temporadas.css';
 class ListaTemporadas extends Component {
 
   render() {
-    console.log(this.props.temporada)
+    console.log(this.props.serie)
     return (
       this.props.temporada.map((temporada) => (
         <div className="temporada_wrapper">
-          <Link to={`/Episodios/${temporada.id}`}>
+          {/* ,state:{id:this.props.id.id} */}
+          <Link to={{pathname:`/Episodios/${temporada.id}`,state:{serie:this.props.serie}}} >
             <div className="temporada_content">
               <div className="temporada_content_numero">
                 <span>Temporada {temporada.numero}</span>

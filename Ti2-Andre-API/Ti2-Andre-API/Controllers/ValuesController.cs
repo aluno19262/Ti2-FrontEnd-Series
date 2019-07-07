@@ -89,14 +89,15 @@ namespace Ti2_Andre_API.Controllers
 
 
         //---------------------Post-----------------------
+        [Route("api/CreateComment/{id}")]
         [HttpPost]
-        public IActionResult CreateComment([FromForm] Comentarios comentario)
+        public IActionResult CreateComment([FromBody] Comentarios comentario, int id)
         {
             // Guardar o agente na BD.
             var novoComentario = new Comentarios
             {
                 Texto = comentario.Texto,
-                EpisodioFK = comentario.EpisodioFK,
+                EpisodioFK = id,
             };
 
             db.Comentarios.Add(novoComentario);
@@ -143,9 +144,22 @@ namespace Ti2_Andre_API.Controllers
         }
 
         // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("DeleteComentario/{id}")]
+        public IActionResult DeleteComentario(int id)
         {
+            var comentario = db.Comentarios.Find(id);
+
+            if (comentario == null)
+            {
+                return NotFound("Não é possível apagar o comentário");
+            }         
+
+            // Apagar da BD...
+            db.Comentarios.Remove(comentario);
+
+            db.SaveChanges();
+
+            return NoContent();
         }
     }
     public class Value

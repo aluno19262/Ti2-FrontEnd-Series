@@ -7,7 +7,6 @@ import '../Style/Episodios.css';
 class ListaEpisodios extends Component {
 
   render() {
-    console.log(this.props.episodio.lenght);
     if (this.props.episodio.lenght === 0) {
       return (
         <p>Não existem episodios para esta temporada</p>
@@ -15,7 +14,7 @@ class ListaEpisodios extends Component {
     } else {
       return this.props.episodio.map((episodio) => (
         <div className="episodios_wrapper">
-          <Link to={`/EpisodiosDetails/${episodio.id}`}>
+          <Link to={{pathname:`/EpisodiosDetails/${episodio.id}`,state:{temporadaid:this.props.temporadaid}}}>
             <div className="episodios_content">
               <div className="episodios_content_numero">
                 <span> Episódio {episodio.numero} </span>

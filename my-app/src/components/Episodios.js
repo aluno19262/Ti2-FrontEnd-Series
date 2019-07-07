@@ -6,8 +6,10 @@ import '../Style/wrapper.css';
 
 class Episodios extends Component {
   state = {
+    id:null,
     isLoaded: false,
     episodio: null,
+    temporadaid:null
   }
 
 
@@ -16,6 +18,8 @@ class Episodios extends Component {
       .then(res => res.json())
       .then((data) => {
         this.setState({
+          temporadaid:this.props.match.params.id,
+          id:this.props.location.state.serie,
           isLoaded: true,
           episodio: data
         })
@@ -25,6 +29,7 @@ class Episodios extends Component {
       .catch(console.log)
   }
   render() {
+    console.log(this.props.location.state)
     if (!this.state.isLoaded) {
       return <div>Loading...</div>
     } else {
@@ -33,14 +38,15 @@ class Episodios extends Component {
           <p className="title">Lista de Episódios</p>
           <div className="wp">
             <div className="_wrapper">
-              <ListaEpisodios key={"serie" + this.state.episodio.id} episodio={this.state.episodio} ></ListaEpisodios>
+              <ListaEpisodios key={"serie" + this.state.episodio.id} episodio={this.state.episodio} temporadaid={this.state.temporadaid}></ListaEpisodios>
             </div>
           </div>
-          <Link to={"/Temporadas/"+this.state.episodio.temporadaFK}>
+          <Link to={"/Temporadas/"+this.state.id}>
             <span className="voltarAtras">Voltar à Lista de Temporadas</span>
         </Link>
         </React.Fragment>
       );
+      
     }
   }
 }
