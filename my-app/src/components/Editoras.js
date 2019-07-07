@@ -4,11 +4,26 @@ import ListaEditoras from './ListaEditoras';
 import '../Style/wrapper.css';
 
 class Editoras extends Component {
+
+/*
+    state:
+      - isLoaded : permite o html nao seja carregado sem que o fetch dos dados esteja completo
+            - false : bloqueia
+            - true : autoriza
+      - editora : containner para os dados vindos da api ,em que cada registo é 1 editora
+*/
+
   state = {
     isLoaded: false,
     editora: null,
   }
 
+
+/* 
+    fetch : faz o pedido get à api e guarda os dados das editoras no state com setState:
+                - isLoaded : premissao para disponibilizar o html 
+                - editora : guarda os dados relativos as editoras (todos os registos da bd das editoras)
+*/
 
   componentDidMount() {
     fetch('http://localhost:5000/api/values/Editoras')
@@ -23,6 +38,14 @@ class Editoras extends Component {
 
       .catch(console.log)
   }
+
+
+/* 
+    Render : Se os dados do fetch já estiverem carregados :
+                - apresenta um titilo e chama o componente ListaEditoras para representar 
+                  a lista de editoras , passando-lhe os dados vindos da api por props
+*/
+
   render() {
     if (!this.state.isLoaded) {
       return <div>Loading...</div>

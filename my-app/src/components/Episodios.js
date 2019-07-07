@@ -5,6 +5,17 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import '../Style/wrapper.css';
 
 class Episodios extends Component {
+
+/*
+ state:
+      - id : guarda o id da série dos episódios
+      - isLoaded : permite o html nao seja carregado sem que o fetch dos dados esteja completo
+            - false : bloqueia
+            - true : autoriza
+      - episodio : containner para os dados vindos da api ,em que cada registo é 1 episódio
+      - temporadaid : guarda o id da temporada dos Episodios
+*/
+
   state = {
     id:null,
     isLoaded: false,
@@ -12,7 +23,14 @@ class Episodios extends Component {
     temporadaid:null
   }
 
+/*
+  fetch : faz o pedido de get à api e guarda os dados no state com setstate:
+              - temporadaid : guarda o id da temporada
+              - id : guarda o id da serie
+              - isLoaded : permissao para representar os dados (funçao equivalente ao await)
+              - episodio : guarda os registos da tabela episodios 
 
+*/ 
   componentDidMount() {
     fetch('https://localhost:5001/api/values/Episodios/' + this.props.match.params.id)
       .then(res => res.json())
@@ -28,6 +46,16 @@ class Episodios extends Component {
 
       .catch(console.log)
   }
+
+    /*
+  render:
+      - isLoaded :
+          false : apresenta no ecra "Loading"
+          true : apresenta um titulo , um botao para voltar ás temporadas e chama o componente 
+                  ListaEpisodios , que apresenta todos os episódios (1 card por temporada) no ecra
+                  passando os dados dos episódios e o id da temporada por props
+  */
+
   render() {
     console.log(this.props.location.state)
     if (!this.state.isLoaded) {

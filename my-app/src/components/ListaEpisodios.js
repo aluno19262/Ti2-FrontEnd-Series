@@ -6,10 +6,21 @@ import '../Style/Episodios.css';
 
 class ListaEpisodios extends Component {
 
+/*
+    Render: avalia se existem episódios, se nao tiver episódios : 
+                  - devolve um paragrafo a informar que não há episódios,
+            caso tenha:
+                  - devolve a lista de episódios , cada 1 num card , 
+                    com os dados vindos das props , enviados pelo componente
+                    Episodios que sao : nome do episódio, imagem do episódio 
+                    e o numero do episódio
+*/ 
+
+
   render() {
     if (this.props.episodio.lenght === 0) {
       return (
-        <p>Não existem episodios para esta temporada</p>
+        <p>Não existem episodios para esta temporada</p>//isto ainda nao funciona
       );
     } else {
       return this.props.episodio.map((episodio) => (

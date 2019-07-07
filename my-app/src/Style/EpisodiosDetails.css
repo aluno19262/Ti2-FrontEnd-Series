@@ -36,6 +36,9 @@
     height:100%;
     width: 300px;
     border-radius:5px;
+    font-size:20px;
+    display: flex;
+    margin:auto;
 }
 
 .episodios_details_content_info_wrapper{

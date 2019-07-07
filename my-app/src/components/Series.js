@@ -6,12 +6,26 @@ import '../Style/wrapper.css';
 export const linkApi = "http://localhost:5000"
 
 class Series extends Component {
+
+/*
+ Estados:
+  - isLoaded : permite o html nao seja carregado sem que o fetch dos dados esteja completo
+    -false : bloqueia
+    -true : autoriza
+  - serie : containner para os dados vindos da api ,em que cada registo é 1 serie
+*/
+
   state = {
     isLoaded: false,
     serie: null,
-    valor:"Séries",
-    
   }
+
+/*
+  Fetch dos dados da api e devolve todas os registos da tabela Series
+   outputs:
+    - sucesso : guarda os dados (isLoaded e serie) no state 
+    - erro : faz console log do erro
+*/
 
   componentDidMount() {
     fetch(linkApi + '/api/values/Series')
@@ -27,11 +41,18 @@ class Series extends Component {
       .catch(console.log)
   }
  
-  render() {
-    
+/*
+  render :
+    - isLoaded :
+      false : apresenta no ecra "Loading"
+      true : apresenta no ecra um titulo e chama o componente ListaSeries 
+              que representa cada serie apresentada no ecra, passando-lhe 
+              os dados das series pelas props
+*/
 
+  render() {
     if (!this.state.isLoaded) {
-      return <div>Loading...</div>
+      return <div>Loading...</div> 
     } else {
       return (
         <React.Fragment>

@@ -6,19 +6,27 @@ import '../Style/temporadas.css';
 
 class ListaTemporadas extends Component {
 
+  /*
+      Render : retorna a lista de temporadas , cada 1 num card , 
+              com os dados vindos do componente pai (Temporadas), 
+              que são : numero da temporada , imagem da temporada 
+              e o nome da temporada.
+              cada 1 destes cads é 1 link , que quando carregado,
+              o cliente e redirecionado para a pagina dos 
+              episódios dessa temporada
+  */
+
   render() {
-    console.log(this.props.serie)
     return (
       this.props.temporada.map((temporada) => (
         <div className="temporada_wrapper">
-          {/* ,state:{id:this.props.id.id} */}
-          <Link to={{pathname:`/Episodios/${temporada.id}`,state:{serie:this.props.serie}}} >
+          <Link to={{ pathname: `/Episodios/${temporada.id}`, state: { serie: this.props.serie } }} >
             <div className="temporada_content">
               <div className="temporada_content_numero">
                 <span>Temporada {temporada.numero}</span>
               </div>
               <div className="temporada_content_img">
-                <img key={temporada.id} src={'../Imagens/' + temporada.foto} alt="../Imagens/ALT.png"></img>
+                <img key={temporada.id} src={'../Imagens/' + temporada.foto} alt="Não existe Foto"></img>
               </div>
               <div className="temporada_content_info">
                 <span>{temporada.nome} </span>
