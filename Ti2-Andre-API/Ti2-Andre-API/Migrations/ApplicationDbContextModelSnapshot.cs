@@ -87,26 +87,6 @@ namespace Ti2_Andre_API.Migrations
                     b.ToTable("Pessoas");
                 });
 
-            modelBuilder.Entity("Ti2_Andre_API.Models.PessoasEpisodios", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("EpisodioFK");
-
-                    b.Property<int>("Papel");
-
-                    b.Property<int>("PessoaFK");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("EpisodioFK");
-
-                    b.HasIndex("PessoaFK");
-
-                    b.ToTable("PessoasEpisodios");
-                });
-
             modelBuilder.Entity("Ti2_Andre_API.Models.Series", b =>
                 {
                     b.Property<int>("ID")
@@ -170,19 +150,6 @@ namespace Ti2_Andre_API.Migrations
                     b.HasOne("Ti2_Andre_API.Models.Temporadas", "Temporadas")
                         .WithMany("Episodios")
                         .HasForeignKey("TemporadaFK")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Ti2_Andre_API.Models.PessoasEpisodios", b =>
-                {
-                    b.HasOne("Ti2_Andre_API.Models.Episodios", "Episodios")
-                        .WithMany("PessoasEpisodios")
-                        .HasForeignKey("EpisodioFK")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Ti2_Andre_API.Models.Pessoas", "Pessoas")
-                        .WithMany("PessoasEpisodios")
-                        .HasForeignKey("PessoaFK")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

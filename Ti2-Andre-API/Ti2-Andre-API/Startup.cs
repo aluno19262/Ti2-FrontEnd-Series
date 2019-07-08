@@ -268,26 +268,6 @@ namespace Ti2_Andre_API
                 }
             }
 
-            if (!db.PessoasEpisodios.Any())
-            {
-                List<PessoasEpisodios> pessoasEpisodios = new List<PessoasEpisodios>
-            {
-               new PessoasEpisodios {ID=1,Papel=0,EpisodioFK=21,PessoaFK=1},
-               new PessoasEpisodios {ID=2,Papel=0,EpisodioFK=22,PessoaFK=1},
-               new PessoasEpisodios {ID=3,Papel=0,EpisodioFK=23,PessoaFK=1},
-               new PessoasEpisodios {ID=4,Papel=0,EpisodioFK=6,PessoaFK=14},
-               new PessoasEpisodios {ID=5,Papel=0,EpisodioFK=6,PessoaFK=15},
-               new PessoasEpisodios {ID=6,Papel=0,EpisodioFK=6,PessoaFK=16},
-            };
-
-                foreach (var e in pessoasEpisodios)
-                {
-                    db.PessoasEpisodios.Add(e);
-                }
-            }
-
-
-
             if (!db.Temporadas.Any())
             {
                 List<Temporadas> temporada = new List<Temporadas>{

@@ -12,7 +12,6 @@ namespace Ti2_Andre_API.Models
         [Key]
         public int ID { get; set; }
 
-
         public int Numero { get; set; }
 
         public string Nome { get; set; }
@@ -34,7 +33,5 @@ namespace Ti2_Andre_API.Models
         public virtual Temporadas Temporadas { get; set; }
 
         public virtual ICollection<Comentarios> ListaDeComentarios { get; set; }
-
-        public virtual ICollection<PessoasEpisodios> PessoasEpisodios { get; set; }
     }
 }

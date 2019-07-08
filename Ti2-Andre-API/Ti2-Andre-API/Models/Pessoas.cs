@@ -13,9 +13,6 @@ namespace Ti2_Andre_API.Models
         [Required(ErrorMessage = "O {0} é de preenchimento obrigatório!")]
         public string Nome { get; set; }
 
-
         public string Foto { get; set; }
-
-        public virtual ICollection<PessoasEpisodios> PessoasEpisodios { get; set; }
     }
 }
