@@ -32,9 +32,9 @@ class App extends Component {
           <Header valor={this.state.valor}></Header>
         </div>
         <Route path="/Series" component={Series}></Route>
-        <Route path="/Temporadas/:id" component={Temporadas}></Route>
-        <Route path="/Episodios/:id" component={Episodios}></Route>
-        <Route path="/EpisodiosDetails/:id" component={EpisodiosDetails}></Route>
+        <Route path="/Serie/:id/Temporadas" component={Temporadas}></Route>
+        <Route path="/Temporada/:id/Episodios" component={Episodios}></Route>
+        <Route path="/Episodio/:id/EpisodiosDetails" component={EpisodiosDetails}></Route>
         <Route path="/Editoras" component={Editoras}></Route>
         <Route path="/Pessoas" component={Pessoas}></Route>
         <Route path="/" ></Route>

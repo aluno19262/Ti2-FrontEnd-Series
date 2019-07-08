@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
+import {linkApi}from "./Series.js";
 import '../Style/temporadas.css';
 
 
@@ -20,13 +20,13 @@ class ListaTemporadas extends Component {
     return (
       this.props.temporada.map((temporada) => (
         <div className="temporada_wrapper">
-          <Link to={{ pathname: `/Episodios/${temporada.id}`, state: { serie: this.props.serie } }} >
+          <Link to={{ pathname: `/Temporada/${temporada.id}/Episodios`, state: { serie: this.props.serie } }} >
             <div className="temporada_content">
               <div className="temporada_content_numero">
                 <span>Temporada {temporada.numero}</span>
               </div>
               <div className="temporada_content_img">
-                <img key={temporada.id} src={'../Imagens/' + temporada.foto} alt="Não existe Foto"></img>
+                <img key={temporada.id} src={linkApi+'/Imagens/' + temporada.foto} alt="Não existe Foto"></img>
               </div>
               <div className="temporada_content_info">
                 <span>{temporada.nome} </span>

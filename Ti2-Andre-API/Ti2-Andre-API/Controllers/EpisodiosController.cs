@@ -9,97 +9,39 @@ using Ti2_Andre_API.Models;
 
 namespace Ti2_Andre_API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/values/")]
     [ApiController]
     public class EpisodiosController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private ApplicationDbContext db;
 
-        public EpisodiosController(ApplicationDbContext context)
+        public EpisodiosController(ApplicationDbContext db)
         {
-            _context = context;
+            this.db = db;
         }
 
-        // GET: api/Episodios
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Episodios>>> GetEpisodios()
+        // GET api/values
+        [HttpGet("Temporadas/{id}/Episodios")]
+        [Produces("application/json")]
+        public ActionResult GetEpisodios(int? id)
         {
-            return await _context.Episodios.ToListAsync();
+            return Ok(db.Episodios.Where(i => i.TemporadaFK == id));
         }
 
-        // GET: api/Episodios/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Episodios>> GetEpisodios(int id)
+        // GET api/values
+        [HttpGet("Episodio/{id}/EpisodiosDetails")]
+        [Produces("application/json")]
+        public ActionResult GetEpisodiosDetails(int? id)
         {
-            var episodios = await _context.Episodios.FindAsync(id);
+            var episodio = db.Episodios.FirstOrDefault(i => i.ID == id);
 
-            if (episodios == null)
+            if (episodio == null)
             {
-                return NotFound();
+                return NotFound("Episódio " + id + " não encontrado.");
             }
 
-            return episodios;
-        }
-
-        // PUT: api/Episodios/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutEpisodios(int id, Episodios episodios)
-        {
-            if (id != episodios.ID)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(episodios).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!EpisodiosExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/Episodios
-        [HttpPost]
-        public async Task<ActionResult<Episodios>> PostEpisodios(Episodios episodios)
-        {
-            _context.Episodios.Add(episodios);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetEpisodios", new { id = episodios.ID }, episodios);
-        }
-
-        // DELETE: api/Episodios/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Episodios>> DeleteEpisodios(int id)
-        {
-            var episodios = await _context.Episodios.FindAsync(id);
-            if (episodios == null)
-            {
-                return NotFound();
-            }
-
-            _context.Episodios.Remove(episodios);
-            await _context.SaveChangesAsync();
-
-            return episodios;
-        }
-
-        private bool EpisodiosExists(int id)
-        {
-            return _context.Episodios.Any(e => e.ID == id);
+            //db.Episodios.Where(i => i.ID == id)
+            return Ok(episodio);
         }
     }
 }

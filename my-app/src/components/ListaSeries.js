@@ -20,7 +20,7 @@ class ListaSeries extends Component {
     return (       
         this.props.serie.map((serie) => ( 
           <div className="series_content_wrapper">
-            <Link to={`/Temporadas/${serie.id}`}>
+            <Link to={`/Serie/${serie.id}/Temporadas`}>
               <div className="series_content_container">
                  <span className="series_content_titulo" > {serie.nome} </span>
               <img className="series_content_img" key={serie.id} src={linkApi+"/Imagens/"+serie.foto} alt="Não existe Foto"></img>

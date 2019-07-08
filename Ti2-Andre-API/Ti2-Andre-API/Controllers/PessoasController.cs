@@ -9,97 +9,23 @@ using Ti2_Andre_API.Models;
 
 namespace Ti2_Andre_API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/values/")]
     [ApiController]
     public class PessoasController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private ApplicationDbContext db;
 
-        public PessoasController(ApplicationDbContext context)
+        public PessoasController(ApplicationDbContext db)
         {
-            _context = context;
+            this.db = db;
         }
 
-        // GET: api/Pessoas
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Pessoas>>> GetPessoas()
+        // GET api/values
+        [HttpGet("Pessoas")]
+        [Produces("application/json")]
+        public ActionResult GetPessoas()
         {
-            return await _context.Pessoas.ToListAsync();
-        }
-
-        // GET: api/Pessoas/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Pessoas>> GetPessoas(int id)
-        {
-            var pessoas = await _context.Pessoas.FindAsync(id);
-
-            if (pessoas == null)
-            {
-                return NotFound();
-            }
-
-            return pessoas;
-        }
-
-        // PUT: api/Pessoas/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutPessoas(int id, Pessoas pessoas)
-        {
-            if (id != pessoas.ID)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(pessoas).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PessoasExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/Pessoas
-        [HttpPost]
-        public async Task<ActionResult<Pessoas>> PostPessoas(Pessoas pessoas)
-        {
-            _context.Pessoas.Add(pessoas);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetPessoas", new { id = pessoas.ID }, pessoas);
-        }
-
-        // DELETE: api/Pessoas/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Pessoas>> DeletePessoas(int id)
-        {
-            var pessoas = await _context.Pessoas.FindAsync(id);
-            if (pessoas == null)
-            {
-                return NotFound();
-            }
-
-            _context.Pessoas.Remove(pessoas);
-            await _context.SaveChangesAsync();
-
-            return pessoas;
-        }
-
-        private bool PessoasExists(int id)
-        {
-            return _context.Pessoas.Any(e => e.ID == id);
+            return Ok(db.Pessoas);
         }
     }
 }

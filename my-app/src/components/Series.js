@@ -3,7 +3,7 @@ import ListaSeries from './ListaSeries';
 
 import '../Style/wrapper.css';
 
-export const linkApi = "http://localhost:5000"
+export const linkApi = "https://localhost:5001"
 
 class Series extends Component {
 

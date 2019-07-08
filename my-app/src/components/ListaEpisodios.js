@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import '../Style/Episodios.css';
+import { linkApi } from './Series';
 
 
 class ListaEpisodios extends Component {
@@ -25,13 +26,13 @@ class ListaEpisodios extends Component {
     } else {
       return this.props.episodio.map((episodio) => (
         <div className="episodios_wrapper">
-          <Link to={{pathname:`/EpisodiosDetails/${episodio.id}`,state:{temporadaid:this.props.temporadaid}}}>
+          <Link to={{pathname:`/Episodio/${episodio.id}/EpisodiosDetails`,state:{temporadaid:this.props.temporadaid}}}>
             <div className="episodios_content">
               <div className="episodios_content_numero">
                 <span> Episódio {episodio.numero} </span>
               </div>
               <div className="episodios_content_img">
-                <img key={episodio.id} src={"../Imagens/" + episodio.foto} alt="Não existe foto"></img>
+                <img key={episodio.id} src={linkApi+"/Imagens/" + episodio.foto} alt="Não existe foto"></img>
               </div>
               <div className="episodios_content_nome">
                 <span>{episodio.nome} </span>

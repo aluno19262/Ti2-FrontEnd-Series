@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import '../Style/Pessoas.css';
+import { linkApi } from './Series';
 
 class ListaPessoas extends Component {
 
@@ -15,7 +16,7 @@ class ListaPessoas extends Component {
           <div className="pessoas_wrapper">
             <div className="pessoas_container">
               <div className="pessoas_img">
-                <img key={pessoa.id} src={"Imagens/"+pessoa.foto} alt="Não existe Foto"></img>
+                <img key={pessoa.id} src={linkApi+"/Imagens/"+pessoa.foto} alt="Não existe Foto"></img>
               </div>
               <div className="pessoas_nome">
                 <p>{pessoa.nome} </p>

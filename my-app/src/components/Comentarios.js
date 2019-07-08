@@ -15,17 +15,14 @@ class Comentarios extends Component {
             - comentario : comentário introduzido pelo utilizador
   */
 
-
   constructor(props) {
     super(props);
     this.state = {
       isLoaded: false,
       apiComment: null,
-      comentario:null
+      comentario: null
     };
   }
-
-
 
   componentDidMount() {
     this.getComment();
@@ -37,7 +34,7 @@ class Comentarios extends Component {
 
   handleClick = apiComment => {
     console.log(apiComment)
-    fetch("http://localhost:5000/api/values/DeleteComentario/" + apiComment, {
+    fetch("https://localhost:5001/api/values/Comentarios/Delete/" + apiComment, {
       method: 'delete',
       headers: {
         'Content-Type': 'application/json'
@@ -61,8 +58,9 @@ class Comentarios extends Component {
                 - caso de erro : disponibiliza na consola o erro 
                 - caso sucesso : guarda os dados 
   */
+
   getComment() {
-    fetch('http://localhost:5000/api/values/Comentarios/' + this.props.x)
+    fetch('https://localhost:5001/api/values/Comentarios/Get/' + this.props.x)
       .then(res => res.json())
       .then((data) => {
         this.setState({
@@ -75,7 +73,6 @@ class Comentarios extends Component {
       .catch(console.log);
   }
 
-
   /*
     função handleClick que e corrida quando o botao de criar 1 comentário é pressionado
     faz o post para a api 
@@ -83,10 +80,9 @@ class Comentarios extends Component {
         - se tudo correr com sucesso : devolve na consola "success: " e a resposta
   */
 
-
   handleClickInsert = () => {
     console.log(this.props.id)
-    const url = "http://localhost:5000/api/values/api/CreateComment/"
+    const url = "https://localhost:5001/api/values/Comentarios/Create/"
     const data = { texto: this.state.comentario }
     fetch(url + this.props.x, {
       method: 'POST',
@@ -116,20 +112,30 @@ class Comentarios extends Component {
       return <div>Loading...</div>
     } else if (this.state.apiComment.length > 0) {
       comentarios = this.state.apiComment.map((apiComment) => (
-        
-                    <div className="comentario" key={apiComment.id}>
-            <p>{apiComment.texto}</p>
-            <span onClick={() => { this.handleClick(apiComment.id) }}>❌</span>
-          </div>
-
-
-        ));
+        <div className="comentario" key={apiComment.id}>
+          <p>{apiComment.texto}</p>
+          <span onClick={() => { this.handleClick(apiComment.id) }}>❌</span>
+        </div>
+      ));
     } else {
-      return (<h2 className="nocontent"> Não existem comentários</h2>);
+      return (
+        <React.Fragment>
+          <h2 className="nocontent"> Não existem comentários</h2>
+      <div className="episodios_details_comentarios_inserir_wrapper">
+        <div className="episodios_details_comentarios_inserir">
+          <input id="ins" type="text" placeholder="Insira o seu comentário" name="name" onChange={e => this.setState({ comentario: e.target.value })} value={this.state.comentario} />
+        </div>
+        <div className="episodios_details_comentarios_inserir_btn">
+          <span onClick={this.handleClickInsert}>➕</span>
+        </div>
+      </div>
+        </React.Fragment>
+      
+      );
     }
     return <React.Fragment>
       <div className="episodios_details_comentarios_show">
-      {comentarios}
+        {comentarios}
       </div>
       <div className="episodios_details_comentarios_inserir_wrapper">
         <div className="episodios_details_comentarios_inserir">

@@ -26,7 +26,7 @@ class Editoras extends Component {
 */
 
   componentDidMount() {
-    fetch('http://localhost:5000/api/values/Editoras')
+    fetch('https://localhost:5001/api/values/Editoras')
       .then(res => res.json())
       .then((data) => {
         this.setState({

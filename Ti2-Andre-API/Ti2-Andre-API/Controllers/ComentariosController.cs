@@ -9,97 +9,79 @@ using Ti2_Andre_API.Models;
 
 namespace Ti2_Andre_API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/values/[controller]")]
     [ApiController]
     public class ComentariosController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private ApplicationDbContext db;
 
-        public ComentariosController(ApplicationDbContext context)
+        public ComentariosController(ApplicationDbContext db)
         {
-            _context = context;
+            this.db = db;
         }
 
-        // GET: api/Comentarios
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Comentarios>>> GetComentarios()
+        // GET api/values
+        [HttpGet("Get/{id}")]
+        [Produces("application/json")]
+        public ActionResult GetComentarios(int? id)
         {
-            return await _context.Comentarios.ToListAsync();
-        }
-
-        // GET: api/Comentarios/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Comentarios>> GetComentarios(int id)
-        {
-            var comentarios = await _context.Comentarios.FindAsync(id);
+            var comentarios = db.Comentarios.FindAsync(id);
 
             if (comentarios == null)
             {
                 return NotFound();
             }
 
-            return comentarios;
+            return Ok(db.Comentarios.Where(i => i.EpisodioFK == id));
         }
 
-        // PUT: api/Comentarios/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutComentarios(int id, Comentarios comentarios)
+        //---------------------Post-----------------------
+        [Route("Create/{id}")]
+        [HttpPost]
+        public IActionResult CreateComment([FromBody] Comentarios comentario, int id)
         {
-            if (id != comentarios.ID)
+            // Guardar o agente na BD.
+            var novoComentario = new Comentarios
             {
-                return BadRequest();
+                Texto = comentario.Texto,
+                EpisodioFK = id,
+            };
+
+            db.Comentarios.Add(novoComentario);
+
+            db.SaveChanges();
+
+            var resultado = new
+            {
+                novoComentario.ID,
+                novoComentario.Texto,
+                novoComentario.EpisodioFK
+            };
+
+
+            return Ok(resultado);
+        }
+        //------------------------------------------------
+
+        // DELETE api/values/5
+        [HttpDelete("Delete/{id}")]
+        public IActionResult DeleteComentario(int id)
+        {
+            var comentario = db.Comentarios.Find(id);
+
+            if (comentario == null)
+            {
+                return NotFound("Não é possível apagar o comentário");
             }
 
-            _context.Entry(comentarios).State = EntityState.Modified;
+            // Apagar da BD...
+            db.Comentarios.Remove(comentario);
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ComentariosExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            db.SaveChanges();
 
             return NoContent();
         }
-
-        // POST: api/Comentarios
-        [HttpPost]
-        public async Task<ActionResult<Comentarios>> PostComentarios(Comentarios comentarios)
-        {
-            _context.Comentarios.Add(comentarios);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetComentarios", new { id = comentarios.ID }, comentarios);
-        }
-
-        // DELETE: api/Comentarios/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Comentarios>> DeleteComentarios(int id)
-        {
-            var comentarios = await _context.Comentarios.FindAsync(id);
-            if (comentarios == null)
-            {
-                return NotFound();
-            }
-
-            _context.Comentarios.Remove(comentarios);
-            await _context.SaveChangesAsync();
-
-            return comentarios;
-        }
-
-        private bool ComentariosExists(int id)
-        {
-            return _context.Comentarios.Any(e => e.ID == id);
-        }
+        //------------------------------------------------
     }
 }
+

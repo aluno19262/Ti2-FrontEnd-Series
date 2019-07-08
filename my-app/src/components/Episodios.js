@@ -32,7 +32,7 @@ class Episodios extends Component {
 */ 
 
   componentDidMount() {
-    fetch('https://localhost:5001/api/values/Episodios/' + this.props.match.params.id)
+    fetch('https://localhost:5001/api/values/Temporadas/'+ this.props.match.params.id+'/Episodios' )
       .then(res => res.json())
       .then((data) => {
         this.setState({
@@ -68,7 +68,7 @@ class Episodios extends Component {
               <ListaEpisodios key={"serie" + this.state.episodio.id} episodio={this.state.episodio} temporadaid={this.state.temporadaid}></ListaEpisodios>
             </div>
           </div>
-          <Link to={"/Temporadas/"+this.state.episodio.temporadaFK}>
+          <Link to={"/Serie/"+this.state.episodio.temporadaFK+"/Temporadas"}>
             <span className="voltarAtras">Voltar à Lista de Temporadas</span>
         </Link>
         </React.Fragment>

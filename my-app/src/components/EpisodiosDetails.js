@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Comentarios from './Comentarios';
 import '../Style/EpisodiosDetails.css';
+import { linkApi } from './Series';
 
 class EpisodiosDetails extends Component {
 
@@ -41,7 +42,7 @@ class EpisodiosDetails extends Component {
   */
 
   componentDidMount() {
-    fetch('http://localhost:5000/api/values/EpisodiosDetails/' + this.state.id)
+    fetch('https://localhost:5001/api/values/Episodio/'+ this.state.id +'/EpisodiosDetails' )
       .then(res => res.json())
       .then((data) => {
         this.setState({
@@ -73,7 +74,7 @@ class EpisodiosDetails extends Component {
           <div className="episodios_details_wrapper">
             <div className="episodios_details_content_wrapper">
               <div className="episodios_details_content_img">
-                <img src={"../Imagens/" + this.state.episodioDetalhes.foto} alt="Não Existe Foto"></img>
+                <img src={linkApi+"/Imagens/" + this.state.episodioDetalhes.foto} alt="Não Existe Foto"></img>
               </div>
               <div className="episodios_details_content_info_wrapper">
                 <div className="episodios_details_content_info_nome">
@@ -95,7 +96,7 @@ class EpisodiosDetails extends Component {
                 <Comentarios x={this.state.id}></Comentarios>             
             </div>
           </div>
-          <Link to={"/Episodios/" + this.state.episodioDetalhes.temporadaFK}>
+          <Link to={"/Temporada/" + this.state.episodioDetalhes.temporadaFK+"/Episodios"}>
             <span className="voltarAtras">Voltar à Lista de Episódios</span>
           </Link>
         </React.Fragment>

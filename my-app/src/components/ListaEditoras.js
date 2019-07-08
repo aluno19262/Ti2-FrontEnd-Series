@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import {linkApi}from "./Series.js";
 import '../Style/Editoras.css';
 
 
@@ -17,7 +17,7 @@ class ListaEditoras extends Component {
       <div className="editora_wrapper">
         <div className="editora_content">
           <div class="editora_img">
-            <img key={editora.id} src={"Imagens/" + editora.logo} alt="Não existe Foto"></img>
+            <img key={editora.id} src={linkApi+"/Imagens/" + editora.logo} alt="Não existe Foto"></img>
           </div>
           <div className="editora_nome">
             <p >{editora.nome.toUpperCase()} </p>

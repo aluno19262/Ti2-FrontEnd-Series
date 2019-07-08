@@ -37,7 +37,7 @@ class Temporadas extends Component {
 
 
   componentDidMount() {
-    fetch('https://localhost:5001/api/values/Temporadas/' + this.props.match.params.id)
+    fetch('https://localhost:5001/api/values/Serie/'+ this.props.match.params.id + '/Temporadas' )
       .then(res => res.json())
       .then((data) => {
         this.setState({
