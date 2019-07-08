@@ -17,7 +17,7 @@ class Episodios extends Component {
 */
 
   state = {
-    id:null,
+    // id:null,
     isLoaded: false,
     episodio: null,
     temporadaid:null
@@ -29,21 +29,20 @@ class Episodios extends Component {
               - id : guarda o id da serie
               - isLoaded : permissao para representar os dados (funçao equivalente ao await)
               - episodio : guarda os registos da tabela episodios 
-
 */ 
+
   componentDidMount() {
     fetch('https://localhost:5001/api/values/Episodios/' + this.props.match.params.id)
       .then(res => res.json())
       .then((data) => {
         this.setState({
           temporadaid:this.props.match.params.id,
-          id:this.props.location.state.serie,
+          // id:this.props.location.state.serie,
           isLoaded: true,
           episodio: data
         })
         console.log(this.state.episodio)
       })
-
       .catch(console.log)
   }
 
@@ -57,7 +56,7 @@ class Episodios extends Component {
   */
 
   render() {
-    console.log(this.props.location.state)
+    console.log(this.state.episodio)
     if (!this.state.isLoaded) {
       return <div>Loading...</div>
     } else {
@@ -69,7 +68,7 @@ class Episodios extends Component {
               <ListaEpisodios key={"serie" + this.state.episodio.id} episodio={this.state.episodio} temporadaid={this.state.temporadaid}></ListaEpisodios>
             </div>
           </div>
-          <Link to={"/Temporadas/"+this.state.id}>
+          <Link to={"/Temporadas/"+this.state.episodio.temporadaFK}>
             <span className="voltarAtras">Voltar à Lista de Temporadas</span>
         </Link>
         </React.Fragment>

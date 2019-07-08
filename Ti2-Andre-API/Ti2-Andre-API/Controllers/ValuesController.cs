@@ -47,8 +47,15 @@ namespace Ti2_Andre_API.Controllers
         [Produces("application/json")]
         public ActionResult GetEpisodiosDetails(int? id)
         {
+            var episodio = db.Episodios.FirstOrDefault(i => i.ID == id);
 
-            return Ok(db.Episodios.Where(i => i.ID == id));
+            if (episodio == null)
+            {
+                return NotFound("Episódio " + id + " não encontrado.");
+            }
+
+            //db.Episodios.Where(i => i.ID == id)
+            return Ok(episodio);
         }
 
         // GET api/values
@@ -78,16 +85,6 @@ namespace Ti2_Andre_API.Controllers
             return Ok(db.Pessoas);
         }
 
-        // GET api/values
-        [HttpGet("Papeis")]
-        [Produces("application/json")]
-        public ActionResult GetPapeis()
-        {
-            
-            return Ok(db.PessoasEpisodios);
-        }
-
-
         //---------------------Post-----------------------
         [Route("api/CreateComment/{id}")]
         [HttpPost]
@@ -115,33 +112,6 @@ namespace Ti2_Andre_API.Controllers
             return Ok(resultado);
         }
         //------------------------------------------------
-
-
-
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult Get([FromQuery] int id, string query)
-        {
-            return Ok(new Value { Id = id, Text = "value" + id });
-        }
-
-        // POST api/values
-        [HttpPost]
-        public ActionResult Post([FromBody] Value value)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            //save da value to the db
-            return CreatedAtAction("Get", new { id = value.Id }, value);
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
 
         // DELETE api/values/5
         [HttpDelete("DeleteComentario/{id}")]
