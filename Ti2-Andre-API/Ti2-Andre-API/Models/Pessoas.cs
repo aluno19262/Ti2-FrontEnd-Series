@@ -16,3 +16,10 @@ namespace Ti2_Andre_API.Models
         public string Foto { get; set; }
     }
 }
+
+/*
+    Tabela Pessoas:
+            - ID : id da pessoa (int)
+            - Nome : nome da pessoa (string)
+            - Foto : fotografia/imagem da pessoa (string)
+*/

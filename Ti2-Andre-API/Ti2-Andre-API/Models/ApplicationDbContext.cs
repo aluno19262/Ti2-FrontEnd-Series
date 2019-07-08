@@ -12,6 +12,9 @@ namespace Ti2_Andre_API.Models
     : base(options)
         {
         }
+
+        //datasets de todas os models da bd
+
         public DbSet<Series> Series { get; set; }
         public DbSet<Temporadas> Temporadas { get; set; }
         public DbSet<Episodios> Episodios { get; set; }

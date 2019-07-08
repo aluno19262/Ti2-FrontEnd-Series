@@ -26,3 +26,15 @@ namespace Ti2_Andre_API.Models
         public virtual ICollection<Episodios> Episodios { get; set; }
     }
 }
+
+/*
+    Tabela Temporadas
+            - Id : id da temporada (int)
+            - Numero : numeor da temporada (int)
+            - Nome : nome da temporada (string)
+            - Foto : fotografia/imagem da temporada (string)
+            - Trailer : trailler da temporada (string)
+            - SeriesFK : chave forasteira para a tabela Series (int)
+            - Episodios : lista de Episódios  (ICollection)
+*/
+

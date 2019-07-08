@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ListaSeries from './ListaSeries';
-
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import '../Style/wrapper.css';
 
 export const linkApi = "https://localhost:5001"
@@ -18,6 +18,14 @@ class Series extends Component {
   state = {
     isLoaded: false,
     serie: null,
+  }
+
+  /*Redirect para a pagina home */
+
+  Redirect = () => {
+    if (this.state.redirect) {
+      return (<Link to='/' />)
+    }
   }
 
 /*
@@ -38,7 +46,7 @@ class Series extends Component {
         console.log(this.state.serie)
       })
 
-      .catch(console.log)
+      .catch(console.log,this.Redirect())
   }
  
 /*

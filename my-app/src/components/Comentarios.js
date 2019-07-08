@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import '../Style/Comentarios.css';
+import { linkApi } from './Series';
 
 
 
@@ -34,7 +35,7 @@ class Comentarios extends Component {
 
   handleClick = apiComment => {
     console.log(apiComment)
-    fetch("https://localhost:5001/api/values/Comentarios/Delete/" + apiComment, {
+    fetch(linkApi+"/api/values/Comentarios/Delete/" + apiComment, {
       method: 'delete',
       headers: {
         'Content-Type': 'application/json'
@@ -60,7 +61,7 @@ class Comentarios extends Component {
   */
 
   getComment() {
-    fetch('https://localhost:5001/api/values/Comentarios/Get/' + this.props.x)
+    fetch(linkApi+"/api/values/Comentarios/Get/" + this.props.x)
       .then(res => res.json())
       .then((data) => {
         this.setState({
@@ -82,7 +83,7 @@ class Comentarios extends Component {
 
   handleClickInsert = () => {
     console.log(this.props.id)
-    const url = "https://localhost:5001/api/values/Comentarios/Create/"
+    const url = linkApi+"/api/values/Comentarios/Create/"
     const data = { texto: this.state.comentario }
     fetch(url + this.props.x, {
       method: 'POST',

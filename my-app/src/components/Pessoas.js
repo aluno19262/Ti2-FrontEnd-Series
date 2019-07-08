@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ListaPessoas from './ListaPessoas';
 
 import '../Style/wrapper.css';
+import { linkApi } from './Series';
 
 class Pessoas extends Component {
 
@@ -24,7 +25,7 @@ class Pessoas extends Component {
                 - pessoa : guarda os dados relativos ás Pessoas (todos os registos da bd das Pessoas)
 */
   componentDidMount() {
-    fetch('https://localhost:5001/api/values/Pessoas')
+    fetch(linkApi+'/api/values/Pessoas')
       .then(res => res.json())
       .then((data) => {
         this.setState({

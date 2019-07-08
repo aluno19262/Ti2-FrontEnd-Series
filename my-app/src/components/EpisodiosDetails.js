@@ -42,7 +42,7 @@ class EpisodiosDetails extends Component {
   */
 
   componentDidMount() {
-    fetch('https://localhost:5001/api/values/Episodio/'+ this.state.id +'/EpisodiosDetails' )
+    fetch(linkApi+"/api/values/Episodio/"+ this.state.id +"/EpisodiosDetails" )
       .then(res => res.json())
       .then((data) => {
         this.setState({

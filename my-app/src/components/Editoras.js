@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ListaEditoras from './ListaEditoras';
 
 import '../Style/wrapper.css';
+import { linkApi } from './Series';
 
 class Editoras extends Component {
 
@@ -26,7 +27,7 @@ class Editoras extends Component {
 */
 
   componentDidMount() {
-    fetch('https://localhost:5001/api/values/Editoras')
+    fetch(linkApi+"/api/values/Editoras")
       .then(res => res.json())
       .then((data) => {
         this.setState({

@@ -16,15 +16,11 @@ namespace Ti2_Andre_API.Models
 
         public string Nome { get; set; }
 
-
         public string Sinopse { get; set; }
 
         public string Foto { get; set; }
 
         public string Trailer { get; set; }
-
-        [NotMapped] // atributo nao aparece na BD
-        public string AuxClassificacao { get; set; }
 
         public double Classificacao { get; set; }
 
@@ -35,3 +31,16 @@ namespace Ti2_Andre_API.Models
         public virtual ICollection<Comentarios> ListaDeComentarios { get; set; }
     }
 }
+
+/*
+    Tabela Episodios
+            - ID : id do episódio (int)
+            - Numero : numero do episódio (int)
+            - Nome : nome do episódio (string)
+            - Sinopse : sinopse/descirção do episódio (string)
+            - Foto : fotografia/imagem do episódio (string)
+            - Trailer : trailer do episódio (string)
+            - Classificacao : Classificação do episódio (double)
+            - TemporadaFK : chave forasteira para a tabela Temporadas (int)
+            - ListaDeComentarios : lista de comentários (ICollection)
+*/

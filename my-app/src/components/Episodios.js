@@ -3,6 +3,7 @@ import ListaEpisodios from './ListaEpisodios';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import '../Style/wrapper.css';
+import { linkApi } from './Series';
 
 class Episodios extends Component {
 
@@ -32,7 +33,7 @@ class Episodios extends Component {
 */ 
 
   componentDidMount() {
-    fetch('https://localhost:5001/api/values/Temporadas/'+ this.props.match.params.id+'/Episodios' )
+    fetch(linkApi+"/api/values/Temporadas/"+ this.props.match.params.id+"/Episodios" )
       .then(res => res.json())
       .then((data) => {
         this.setState({

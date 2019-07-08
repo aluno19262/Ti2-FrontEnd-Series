@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import '../Style/temporadas.css';
 //ficheiro css dos containners
 import '../Style/wrapper.css';
+import { linkApi } from './Series';
 
 
 /*
@@ -37,7 +38,7 @@ class Temporadas extends Component {
 
 
   componentDidMount() {
-    fetch('https://localhost:5001/api/values/Serie/'+ this.props.match.params.id + '/Temporadas' )
+    fetch(linkApi+"/api/values/Serie/"+ this.props.match.params.id + "/Temporadas" )
       .then(res => res.json())
       .then((data) => {
         this.setState({
