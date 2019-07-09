@@ -41,17 +41,17 @@ namespace Ti2_Andre_API.Controllers
         [HttpPost]
         public IActionResult CreateComment([FromBody] Comentarios comentario, int id)
         {
-            // Guardar o agente na BD.
+            //novo comentario com Texto e EpisodioFK como atributos (id é adicionado automaticamente)
             var novoComentario = new Comentarios
             {
                 Texto = comentario.Texto,
                 EpisodioFK = id,
             };
-
+            //guardar na bd as alterações
             db.Comentarios.Add(novoComentario);
-
             db.SaveChanges();
 
+            
             var resultado = new
             {
                 novoComentario.ID,
@@ -69,7 +69,7 @@ namespace Ti2_Andre_API.Controllers
         public IActionResult DeleteComentario(int id)
         {
             var comentario = db.Comentarios.Find(id);
-
+            //se nao existir comentário , apresenta uma mensagem de erro 
             if (comentario == null)
             {
                 return NotFound("Não é possível apagar o comentário");
@@ -77,7 +77,6 @@ namespace Ti2_Andre_API.Controllers
 
             // Apagar da BD...
             db.Comentarios.Remove(comentario);
-
             db.SaveChanges();
 
             return NoContent();

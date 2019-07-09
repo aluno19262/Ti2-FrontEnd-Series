@@ -28,5 +28,38 @@ namespace Ti2_Andre_API.Controllers
 
             return Ok(db.Temporadas.Where(t => t.SerieFK == id));
         }
+
+        [HttpGet("{id}/Temporadas/{pesquisa}")]
+        public IActionResult GetAll(int id, string pesquisa )
+        {
+            //query linq na tabela das temporadas
+            IQueryable<Temporadas> query = db.Temporadas;
+
+            //verificar se a pesquisa tem alguma letra (comparando se tem algum espaço branco ou se for null)
+            if (!string.IsNullOrWhiteSpace(pesquisa))
+            {
+                //transformar a string de pesquisa com todos os caracteres em minusculas 
+                //e retirando eventuais espaços em branco nos extremos da string
+                pesquisa = pesquisa.ToLower().Trim();
+                //query para saber quais os elementos que tem o mesmo serieFK 
+                //e que contenham elementos da string pesquisa no seu conteudo (Nome)
+                query = query.Where(a => a.Nome.ToLower().Contains(pesquisa) && a.SerieFK==id);
+            }
+
+            //resultado são os atributos ID ,numero,nome , foto e trailer 
+            //dos registos que cumprem com a condiçao da query
+            var resultado = query
+                .Select(a => new
+                {
+                    a.ID,
+                    a.Numero,
+                    a.Nome,
+                    a.Foto,
+                    a.Trailer
+                })
+                .ToList();
+
+            return Ok(resultado);
+        }
     }
 }

@@ -16,6 +16,7 @@ import { linkApi } from './Series';
         - false : bloqueia
         - true : autoriza
     - temporada : containner para os dados vindos da api ,em que cada registo é 1 temporada
+    - pesquisa : texto da pesquisa
 */ 
 
 class Temporadas extends Component {
@@ -24,7 +25,8 @@ class Temporadas extends Component {
     this.state = {
       id: null,
       isLoaded: false,
-      temporada: null
+      temporada: null,
+      pesquisa:null
     };
   }
 
@@ -38,18 +40,42 @@ class Temporadas extends Component {
 
 
   componentDidMount() {
-    fetch(linkApi+"/api/values/Serie/"+ this.props.match.params.id + "/Temporadas" )
-      .then(res => res.json())
-      .then((data) => {
-        this.setState({
-          id: this.props.match.params.id,
-          isLoaded: true,
-          temporada: data
-        })
-        console.log(this.state.temporada)
-      })
-      .catch(console.log)
+    this.getComment()
   }
+//função para fazer fetch que atualiza a variavel isLoaded e guarda as temporadas na variavel temporada
+  getComment() {
+    fetch(linkApi+"/api/values/Serie/"+ this.props.match.params.id + "/Temporadas")
+    .then(res => res.json())
+    .then((data) => {
+      this.setState({
+        id: this.props.match.params.id,
+        isLoaded: true,
+        temporada: data
+      })
+      console.log(this.state.temporada)
+    })
+    .catch(console.log)
+  }
+
+  ChangeValue(evt){
+    this.setState({ pesquisa: evt.target.value });
+  }
+
+  //função para fazer a pesquisa 
+  ChangePesquisa=()=>{    
+    fetch(linkApi+"/api/values/Serie/"+ this.props.match.params.id + "/Temporadas/"+this.state.pesquisa)
+    .then(res => res.json())
+    .then((data) => {
+      this.setState({
+        id: this.props.match.params.id,
+        isLoaded: true,
+        temporada: data
+      })
+      console.log(this.state.temporada)
+    })
+    .catch(console.log)
+  }
+
 
   /*
   render:
@@ -58,16 +84,20 @@ class Temporadas extends Component {
           true : apresenta um titulo , um botao para voltar ás séries e chama o componente 
                   Lista de Temporadas , que apresenta todas as temporadas (1 card por temporada)
                   no ecra
+      É inserido um titulo , uma barra de pesquisa, a lista de temporadas e um botão para voltar ás séries
   */
 
   render() {
-    console.log(this.state.id)
     if (!this.state.isLoaded) {
       return <div>Loading...</div>
     } else {
       return (
         <React.Fragment>
           <p className="title">Lista de Temporadas</p>
+          <div className="temporadas_pesquisa">
+            <span>Pesquisa : </span>
+          <input  type="text" placeholder="Pesquise" name="name" onChange={(evt) => { this.setState({ pesquisa: evt.target.value }, () => {this.ChangePesquisa(evt)});}} />
+        </div>
           <div className="wp">
             <div className="_wrapper">
               <ListaTemporadas key={"serie" + this.state.temporada.id} temporada={this.state.temporada} serie={this.state.id}></ListaTemporadas>

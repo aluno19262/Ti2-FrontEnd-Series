@@ -102,12 +102,13 @@ nav li:hover::after {
 }
 
 .titulo_App{
+    position: absolute;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 60px;
-    top: 50%;
+    font-size: 80px;
+    top: 40%;
     
 }
 

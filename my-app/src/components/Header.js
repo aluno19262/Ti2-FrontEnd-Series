@@ -2,33 +2,27 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import '../Style/Header.css';
+import { linkApi } from './Series';
 
 
 
 class Header extends Component {
-
-  state={
-    hasContent:false
-  }
-
-  handleClick = () => {
-    this.setState({
-        hasContent:!this.state.hasContent
-    })
-  }
-
 /* 
   Render: apresenta um HOME button que volta a pagina inicial "localhost:3000" e apresenta 3 links 
           em que cada 1 vai diretamente para a página das Séries, para a página das Editoras 
           e para a página das Pessoas 
+
+          variavel que tem o valor do path do router para saber se estamos no endereço "localhost:3000"
+          e neste caso , mostra o titulo da aplicação e esconde o botão "home"
+          caso contrario , mostra o botão "home" e esconde o titulo
 */
 
   render() {
-    let aux = !this.state.hasContent 
+    let home = window.location.pathname == "/" ? true : false;
     return (
       <React.Fragment>
         <div style={{ width: "100%", margin: 0, padding: 0 }}>
-        {aux?(<React.Fragment></React.Fragment>):(<div className="home_btn">
+        {home ?(<React.Fragment></React.Fragment>):(<div className="home_btn">
           <Link to="/" onClick={e => this.setState({ hasContent: false })}>{this.props.valor}</Link>
         </div>)}
         
@@ -42,8 +36,9 @@ class Header extends Component {
           </nav>
         </div>
       </div >
-      {aux?(<div className="titulo_App">
-          <h1>Series4All</h1>
+      {home ?(<div className="titulo_App">
+          <h1>Séries4All</h1>
+          <img src={linkApi+"/Imagens/balde.png"}></img>
       </div>):(<React.Fragment></React.Fragment>)}
       </React.Fragment>
       
