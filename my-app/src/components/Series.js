@@ -20,14 +20,6 @@ class Series extends Component {
     serie: null,
   }
 
-  /*Redirect para a pagina home */
-
-  Redirect = () => {
-    if (this.state.redirect) {
-      return (<Link to='/' />)
-    }
-  }
-
 /*
   Fetch dos dados da api e devolve todas os registos da tabela Series
    outputs:
@@ -38,6 +30,7 @@ class Series extends Component {
   componentDidMount() {
     fetch(linkApi + '/api/values/Series')
       .then(res => res.json())
+      
       .then((data) => {
         this.setState({
           isLoaded: true,
@@ -45,8 +38,8 @@ class Series extends Component {
         })
         console.log(this.state.serie)
       })
-
-      .catch(console.log,this.Redirect())
+      .catch(console.log())
+      
   }
  
 /*

@@ -26,7 +26,7 @@ class ListaEpisodios extends Component {
     } else {
       return this.props.episodio.map((episodio) => (
         <div className="episodios_wrapper">
-          <Link to={{pathname:`/Episodio/${episodio.id}/EpisodiosDetails`,state:{temporadaid:this.props.temporadaid}}}>
+          <Link to={{pathname:`/Episodio/${episodio.id}/EpisodiosDetails`,state:{temporadaid:this.props.temporadaid,serieId:this.props.serieId}}}>
             <div className="episodios_content">
               <div className="episodios_content_numero">
                 <span> Episódio {episodio.numero} </span>

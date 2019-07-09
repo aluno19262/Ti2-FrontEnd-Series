@@ -96,7 +96,7 @@ class EpisodiosDetails extends Component {
                 <Comentarios x={this.state.id}></Comentarios>             
             </div>
           </div>
-          <Link to={"/Temporada/" + this.state.episodioDetalhes.temporadaFK+"/Episodios"}>
+          <Link to={{pathname:"/Temporada/" + this.state.episodioDetalhes.temporadaFK+"/Episodios",state:{serieId : this.props.location.state.serieId}}}>
             <span className="voltarAtras">Voltar à Lista de Episódios</span>
           </Link>
         </React.Fragment>

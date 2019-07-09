@@ -18,7 +18,7 @@ class Episodios extends Component {
 */
 
   state = {
-    // id:null,
+    id:null,
     isLoaded: false,
     episodio: null,
     temporadaid:null
@@ -38,7 +38,7 @@ class Episodios extends Component {
       .then((data) => {
         this.setState({
           temporadaid:this.props.match.params.id,
-          // id:this.props.location.state.serie,
+          id:this.props.location.state.serie,
           isLoaded: true,
           episodio: data
         })
@@ -56,8 +56,10 @@ class Episodios extends Component {
                   passando os dados dos episódios e o id da temporada por props
   */
 
+
+
   render() {
-    console.log(this.state.episodio)
+    let aux = this.props.location.state.serieId||false 
     if (!this.state.isLoaded) {
       return <div>Loading...</div>
     } else {
@@ -66,12 +68,15 @@ class Episodios extends Component {
           <p className="title">Lista de Episódios</p>
           <div className="wp">
             <div className="_wrapper">
-              <ListaEpisodios key={"serie" + this.state.episodio.id} episodio={this.state.episodio} temporadaid={this.state.temporadaid}></ListaEpisodios>
+              <ListaEpisodios key={"serie" + this.state.episodio.id} episodio={this.state.episodio} temporadaid={this.state.temporadaid} serieId={this.props.location.state.serie}></ListaEpisodios>
             </div>
           </div>
-          <Link to={"/Serie/"+this.state.episodio.temporadaFK+"/Temporadas"}>
+          {aux?(<Link to={"/Serie/"+ this.props.location.state.serieId+"/Temporadas"}>
             <span className="voltarAtras">Voltar à Lista de Temporadas</span>
-        </Link>
+        </Link>):(<Link to={"/Serie/"+ this.props.location.state.serie+"/Temporadas"}>
+            <span className="voltarAtras">Voltar à Lista de Temporadas</span>
+        </Link>)}
+          
         </React.Fragment>
       );
       
