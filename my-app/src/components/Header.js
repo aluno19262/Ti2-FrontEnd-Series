@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import '../Style/Header.css';
+import { linkApi } from './Series';
 
 
 
@@ -10,6 +11,10 @@ class Header extends Component {
   Render: apresenta um HOME button que volta a pagina inicial "localhost:3000" e apresenta 3 links 
           em que cada 1 vai diretamente para a página das Séries, para a página das Editoras 
           e para a página das Pessoas 
+
+          variavel que tem o valor do path do router para saber se estamos no endereço "localhost:3000"
+          e neste caso , mostra o titulo da aplicação e esconde o botão "home"
+          caso contrario , mostra o botão "home" e esconde o titulo
 */
 
   render() {
@@ -33,7 +38,7 @@ class Header extends Component {
       </div >
       {home ?(<div className="titulo_App">
           <h1>Séries4All</h1>
-          <img src="../Imagens/balde.png"></img>
+          <img src={linkApi+"/Imagens/balde.png"}></img>
       </div>):(<React.Fragment></React.Fragment>)}
       </React.Fragment>
       

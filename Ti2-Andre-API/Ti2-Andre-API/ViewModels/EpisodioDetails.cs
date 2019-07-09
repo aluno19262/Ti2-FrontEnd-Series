@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 
 namespace Ti2_Andre_API.ViewModels
 {
+
+    //class auxiliar para fornecer dados de varias tabelas para 1 pesquisa
     public class EpisodioDetails
     {
         public int ID { get; set; }

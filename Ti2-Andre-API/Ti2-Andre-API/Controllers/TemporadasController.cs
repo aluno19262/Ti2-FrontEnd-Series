@@ -32,28 +32,22 @@ namespace Ti2_Andre_API.Controllers
         [HttpGet("{id}/Temporadas/{pesquisa}")]
         public IActionResult GetAll(int id, string pesquisa )
         {
-            // Linq - queries dinâmicas.
-            // Muitas vezes, os parâmetros de pesquisa são opcionais.
-            // Logo, podemos compor uma query Linq começando a partir da
-            // tabela dos agentes.
+            //query linq na tabela das temporadas
             IQueryable<Temporadas> query = db.Temporadas;
 
-            // Se o termo de pesquisa estiver definido, então compõe-se
-            // a query com um .Where para filtrar no nome, usando o .Contains
-            // (LIKE em SQL)
-            // O string.IsNullOrWhiteSpace(texto) devolve verdadeiro se
-            // texto != null && texto != "" && texto.Trim() != ""
+            //verificar se a pesquisa tem alguma letra (comparando se tem algum espaço branco ou se for null)
             if (!string.IsNullOrWhiteSpace(pesquisa))
             {
+                //transformar a string de pesquisa com todos os caracteres em minusculas 
+                //e retirando eventuais espaços em branco nos extremos da string
                 pesquisa = pesquisa.ToLower().Trim();
-                // Como queries são imutáveis, guardamos a nova query na variável acima.
-                // Convém fazer o lower case (minúsculas) para facilitar as pesquisas.
-                query = query.Where(a => a.Nome.ToLower().Contains(pesquisa)&&a.SerieFK==id);
+                //query para saber quais os elementos que tem o mesmo serieFK 
+                //e que contenham elementos da string pesquisa no seu conteudo (Nome)
+                query = query.Where(a => a.Nome.ToLower().Contains(pesquisa) && a.SerieFK==id);
             }
 
-            // Usar o .Select para remover as referências circulares
-            // Agentes <-> Multas, que iriam fazer com que ocorressem
-            // erros ao produzir o JSON.
+            //resultado são os atributos ID ,numero,nome , foto e trailer 
+            //dos registos que cumprem com a condiçao da query
             var resultado = query
                 .Select(a => new
                 {

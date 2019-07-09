@@ -34,7 +34,6 @@ class Comentarios extends Component {
   */
 
   handleClick = apiComment => {
-    console.log(apiComment)
     fetch(linkApi+"/api/values/Comentarios/Delete/" + apiComment, {
       method: 'delete',
       headers: {
@@ -69,7 +68,6 @@ class Comentarios extends Component {
           apiComment: data
         });
         console.log(this.state.apiComment);
-        console.log(this.state.apiComment.length);
       })
       .catch(console.log);
   }
@@ -82,7 +80,7 @@ class Comentarios extends Component {
   */
 
   handleClickInsert = () => {
-    console.log(this.props.id)
+
     const url = linkApi+"/api/values/Comentarios/Create/"
     const data = { texto: this.state.comentario }
     fetch(url + this.props.x, {
@@ -108,7 +106,6 @@ class Comentarios extends Component {
 
   render() {
     var comentarios = [];
-    console.log(this.props.x);
     if (!this.state.isLoaded) {
       return <div>Loading...</div>
     } else if (this.state.apiComment.length > 0) {

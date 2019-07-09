@@ -21,7 +21,7 @@ class ListaEpisodios extends Component {
   render() {
     if (this.props.episodio.lenght === 0) {
       return (
-        <p>Não existem episodios para esta temporada</p>//isto ainda nao funciona
+        <p>Não existem episodios para esta temporada</p>
       );
     } else {
       return this.props.episodio.map((episodio) => (
