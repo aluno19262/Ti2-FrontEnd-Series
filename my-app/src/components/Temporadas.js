@@ -24,7 +24,8 @@ class Temporadas extends Component {
     this.state = {
       id: null,
       isLoaded: false,
-      temporada: null
+      temporada: null,
+      pesquisa:null
     };
   }
 
@@ -38,18 +39,42 @@ class Temporadas extends Component {
 
 
   componentDidMount() {
-    fetch(linkApi+"/api/values/Serie/"+ this.props.match.params.id + "/Temporadas" )
-      .then(res => res.json())
-      .then((data) => {
-        this.setState({
-          id: this.props.match.params.id,
-          isLoaded: true,
-          temporada: data
-        })
-        console.log(this.state.temporada)
-      })
-      .catch(console.log)
+    this.getComment()
   }
+
+  getComment(y) {
+    fetch(linkApi+"/api/values/Serie/"+ this.props.match.params.id + "/Temporadas")
+    .then(res => res.json())
+    .then((data) => {
+      this.setState({
+        id: this.props.match.params.id,
+        isLoaded: true,
+        temporada: data
+      })
+      console.log(this.state.temporada)
+    })
+    .catch(console.log)
+  }
+
+  ChangeValue(evt){
+    this.setState({ pesquisa: evt.target.value });
+  }
+
+  ChangePesquisa=(evt)=>{
+    
+    fetch(linkApi+"/api/values/Serie/"+ this.props.match.params.id + "/Temporadas/"+this.state.pesquisa)
+    .then(res => res.json())
+    .then((data) => {
+      this.setState({
+        id: this.props.match.params.id,
+        isLoaded: true,
+        temporada: data
+      })
+      console.log(this.state.temporada)
+    })
+    .catch(console.log)
+  }
+
 
   /*
   render:
@@ -61,13 +86,19 @@ class Temporadas extends Component {
   */
 
   render() {
-    console.log(this.state.id)
+    console.log(this.state.pesquisa)
     if (!this.state.isLoaded) {
       return <div>Loading...</div>
     } else {
       return (
         <React.Fragment>
           <p className="title">Lista de Temporadas</p>
+          <div className="temporadas_pesquisa">
+            <span>Pesquisa : </span>
+          <input  type="text" placeholder="Insira o seu comentário" name="name" onChange={(evt) => { this.setState({ pesquisa: evt.target.value }, () => {
+   this.ChangePesquisa(evt)
+});}} />
+        </div>
           <div className="wp">
             <div className="_wrapper">
               <ListaTemporadas key={"serie" + this.state.temporada.id} temporada={this.state.temporada} serie={this.state.id}></ListaTemporadas>

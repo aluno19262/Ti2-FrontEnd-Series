@@ -28,5 +28,44 @@ namespace Ti2_Andre_API.Controllers
 
             return Ok(db.Temporadas.Where(t => t.SerieFK == id));
         }
+
+        [HttpGet("{id}/Temporadas/{pesquisa}")]
+        public IActionResult GetAll(int id, string pesquisa )
+        {
+            // Linq - queries dinâmicas.
+            // Muitas vezes, os parâmetros de pesquisa são opcionais.
+            // Logo, podemos compor uma query Linq começando a partir da
+            // tabela dos agentes.
+            IQueryable<Temporadas> query = db.Temporadas;
+
+            // Se o termo de pesquisa estiver definido, então compõe-se
+            // a query com um .Where para filtrar no nome, usando o .Contains
+            // (LIKE em SQL)
+            // O string.IsNullOrWhiteSpace(texto) devolve verdadeiro se
+            // texto != null && texto != "" && texto.Trim() != ""
+            if (!string.IsNullOrWhiteSpace(pesquisa))
+            {
+                pesquisa = pesquisa.ToLower().Trim();
+                // Como queries são imutáveis, guardamos a nova query na variável acima.
+                // Convém fazer o lower case (minúsculas) para facilitar as pesquisas.
+                query = query.Where(a => a.Nome.ToLower().Contains(pesquisa)&&a.SerieFK==id);
+            }
+
+            // Usar o .Select para remover as referências circulares
+            // Agentes <-> Multas, que iriam fazer com que ocorressem
+            // erros ao produzir o JSON.
+            var resultado = query
+                .Select(a => new
+                {
+                    a.ID,
+                    a.Numero,
+                    a.Nome,
+                    a.Foto,
+                    a.Trailer
+                })
+                .ToList();
+
+            return Ok(resultado);
+        }
     }
 }
