@@ -100,3 +100,20 @@ nav li:hover::after {
     color:black;
     font-size:30px;
 }
+
+.titulo_App{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    top: 50%;
+    
+}
+
+.titulo_App h1{
+    margin: 0;
+    text-shadow: 7px 7px 3px black;
+    font-style: italic;
+    color: white;
+}

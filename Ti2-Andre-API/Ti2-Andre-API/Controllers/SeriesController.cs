@@ -19,7 +19,7 @@ namespace Ti2_Andre_API.Controllers
         {
             this.db = db;
         }
-
+        //get de todas as séries
         // GET api/values
         [HttpGet("")]
         [Produces("application/json")]

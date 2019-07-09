@@ -20,6 +20,7 @@ namespace Ti2_Andre_API.Controllers
             this.db = db;
         }
 
+        //get de todas as pessoas
         // GET api/values
         [HttpGet("Pessoas")]
         [Produces("application/json")]

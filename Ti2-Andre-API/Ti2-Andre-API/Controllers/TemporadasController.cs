@@ -19,7 +19,7 @@ namespace Ti2_Andre_API.Controllers
         {
             this.db = db;
         }
-
+        //get das temporadas de 1 série especifica , com id fornecido
         // GET api/values
         [HttpGet("{id}/Temporadas")]
         [Produces("application/json")]

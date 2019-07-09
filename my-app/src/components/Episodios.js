@@ -59,10 +59,11 @@ class Episodios extends Component {
 
 
   render() {
-    let aux = this.props.location.state.serieId||false 
+
+
     if (!this.state.isLoaded) {
       return <div>Loading...</div>
-    } else {
+    } else if(this.state.episodio.length >0){
       return (
         <React.Fragment>
           <p className="title">Lista de Episódios</p>
@@ -71,15 +72,21 @@ class Episodios extends Component {
               <ListaEpisodios key={"serie" + this.state.episodio.id} episodio={this.state.episodio} temporadaid={this.state.temporadaid} serieId={this.props.location.state.serie}></ListaEpisodios>
             </div>
           </div>
-          {aux?(<Link to={"/Serie/"+ this.props.location.state.serieId+"/Temporadas"}>
+          <Link to={"/Serie/"+ this.state.episodio[0].serieFK+"/Temporadas"}>
             <span className="voltarAtras">Voltar à Lista de Temporadas</span>
-        </Link>):(<Link to={"/Serie/"+ this.props.location.state.serie+"/Temporadas"}>
-            <span className="voltarAtras">Voltar à Lista de Temporadas</span>
-        </Link>)}
+        </Link>
           
         </React.Fragment>
       );
       
+    }else{
+      return <React.Fragment>
+              <p>Não Existem Episódios</p>
+      <Link to={"/Serie/"+ this.props.location.state.serie+"/Temporadas"}>
+            <span className="voltarAtras">Voltar à Lista de Temporadas</span>
+        </Link>
+      </React.Fragment>
+
     }
   }
 }

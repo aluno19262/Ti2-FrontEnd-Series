@@ -19,7 +19,7 @@ namespace Ti2_Andre_API.Controllers
         {
             this.db = db;
         }
-
+        //get dos comentarios de 1 episódio com id fornecido
         // GET api/values
         [HttpGet("Get/{id}")]
         [Produces("application/json")]
@@ -36,6 +36,7 @@ namespace Ti2_Andre_API.Controllers
         }
 
         //---------------------Post-----------------------
+        // post de 1 comentário
         [Route("Create/{id}")]
         [HttpPost]
         public IActionResult CreateComment([FromBody] Comentarios comentario, int id)
@@ -62,7 +63,7 @@ namespace Ti2_Andre_API.Controllers
             return Ok(resultado);
         }
         //------------------------------------------------
-
+        //delete de 1 comentário
         // DELETE api/values/5
         [HttpDelete("Delete/{id}")]
         public IActionResult DeleteComentario(int id)
