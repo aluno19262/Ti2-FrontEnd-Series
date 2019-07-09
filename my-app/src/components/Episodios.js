@@ -55,9 +55,6 @@ class Episodios extends Component {
                   ListaEpisodios , que apresenta todos os episódios (1 card por temporada) no ecra
                   passando os dados dos episódios e o id da temporada por props
   */
-
-
-
   render() {
 
 
@@ -74,8 +71,7 @@ class Episodios extends Component {
           </div>
           <Link to={"/Serie/"+ this.state.episodio[0].serieFK+"/Temporadas"}>
             <span className="voltarAtras">Voltar à Lista de Temporadas</span>
-        </Link>
-          
+        </Link>        
         </React.Fragment>
       );
       

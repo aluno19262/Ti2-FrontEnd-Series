@@ -16,7 +16,7 @@ class ListaEditoras extends Component {
     return this.props.editora.map((editora) => (
       <div className="editora_wrapper">
         <div className="editora_content">
-          <div class="editora_img">
+          <div className="editora_img">
             <img key={editora.id} src={linkApi+"/Imagens/" + editora.logo} alt="Não existe Foto"></img>
           </div>
           <div className="editora_nome">

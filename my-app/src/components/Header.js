@@ -29,15 +29,15 @@ class Header extends Component {
       <React.Fragment>
         <div style={{ width: "100%", margin: 0, padding: 0 }}>
         {aux?(<React.Fragment></React.Fragment>):(<div className="home_btn">
-          <Link to="/" onClick={this.handleClick}>{this.props.valor}</Link>
+          <Link to="/" onClick={e => this.setState({ hasContent: false })}>{this.props.valor}</Link>
         </div>)}
         
         <div style={Dstyle}>
           <nav>
             <ul>
-              <li><Link style={{ textDecoration: "none", color: "black", flex: 1 }} to="/Series" onClick={this.handleClick}>Séries</Link></li>
-              <li><Link style={{ textDecoration: "none", color: "black", flex: 1 }} to="/Editoras" onClick={this.handleClick}>Editoras</Link></li>
-              <li><Link style={{ textDecoration: "none", color: "black", flex: 1 }} to="/Pessoas" onClick={this.handleClick}>Pessoas</Link></li>
+              <li><Link style={{ textDecoration: "none", color: "black", flex: 1 }} to="/Series" onClick={e => this.setState({ hasContent: true })}>Séries</Link></li>
+              <li><Link style={{ textDecoration: "none", color: "black", flex: 1 }} to="/Editoras" onClick={e => this.setState({ hasContent: true })}>Editoras</Link></li>
+              <li><Link style={{ textDecoration: "none", color: "black", flex: 1 }} to="/Pessoas" onClick={e => this.setState({ hasContent: true })}>Pessoas</Link></li>
             </ul>
           </nav>
         </div>
