@@ -95,7 +95,7 @@ class Temporadas extends Component {
           <p className="title">Lista de Temporadas</p>
           <div className="temporadas_pesquisa">
             <span>Pesquisa : </span>
-          <input  type="text" placeholder="Insira o seu comentário" name="name" onChange={(evt) => { this.setState({ pesquisa: evt.target.value }, () => {
+          <input  type="text" placeholder="Insira a sua pesquisa" name="name" onChange={(evt) => { this.setState({ pesquisa: evt.target.value }, () => {
    this.ChangePesquisa(evt)
 });}} />
         </div>
