@@ -9,7 +9,7 @@ using Ti2_Andre_API.Models;
 
 namespace Ti2_Andre_API.Controllers
 {
-    [Route("api/values/[controller]")]
+    [Route("api/values/Series")]
     [ApiController]
     public class SeriesController : ControllerBase
     {
@@ -27,5 +27,7 @@ namespace Ti2_Andre_API.Controllers
         {
             return Ok(db.Series);
         }
+
+        
     }
 }

@@ -58,6 +58,8 @@ class Series extends Component {
       return (
         <React.Fragment>
           <p className="title">Lista de Séries</p>
+          
+          <span className="serie_create"></span>
           <div className="wp">
             <div className="_wrapper">
               <ListaSeries key={"serie" + this.state.serie.id} 

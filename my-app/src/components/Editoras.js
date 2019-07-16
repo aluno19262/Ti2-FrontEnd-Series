@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ListaEditoras from './ListaEditoras';
-
+import { BrowserRouter as Router,Route, Link } from "react-router-dom";
 import '../Style/wrapper.css';
 import { linkApi } from './Series';
 
@@ -54,6 +54,9 @@ class Editoras extends Component {
       return (
         <React.Fragment>
           <p className="title">Lista de Editoras</p>
+          <div className="editora_create_link">
+            <Link to={`/Editora/Create`}>Adicionar uma Editora</Link>
+          </div>
           <div className="wp">
             <div className="_wrapper">
               <ListaEditoras key={"serie" + this.state.editora.id} editora={this.state.editora} ></ListaEditoras>
