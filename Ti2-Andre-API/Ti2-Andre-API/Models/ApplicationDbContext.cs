@@ -22,5 +22,10 @@ namespace Ti2_Andre_API.Models
         public DbSet<Editora> Editoras { get; set; }
         public DbSet<Comentarios> Comentarios { get; set; }
         public object Editora { get; internal set; }
+
+        internal object Find(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

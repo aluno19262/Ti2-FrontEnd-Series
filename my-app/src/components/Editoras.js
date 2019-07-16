@@ -14,31 +14,10 @@ class Editoras extends Component {
       - editora : containner para os dados vindos da api ,em que cada registo é 1 editora
 */
 
-  state = {
-    isLoaded: false,
-    editora: null,
-  }
 
 
-/* 
-    fetch : faz o pedido get à api e guarda os dados das editoras no state com setState:
-                - isLoaded : premissao para disponibilizar o html 
-                - editora : guarda os dados relativos as editoras (todos os registos da bd das editoras)
-*/
 
-  componentDidMount() {
-    fetch(linkApi+"/api/values/Editoras")
-      .then(res => res.json())
-      .then((data) => {
-        this.setState({
-          isLoaded: true,
-          editora: data
-        })
-        console.log(this.state.editora)
-      })
 
-      .catch(console.log)
-  }
 
 
 /* 
@@ -48,9 +27,7 @@ class Editoras extends Component {
 */
 
   render() {
-    if (!this.state.isLoaded) {
-      return <div>Loading...</div>
-    } else {
+
       return (
         <React.Fragment>
           <p className="title">Lista de Editoras</p>
@@ -59,14 +36,14 @@ class Editoras extends Component {
           </div>
           <div className="wp">
             <div className="_wrapper">
-              <ListaEditoras key={"serie" + this.state.editora.id} editora={this.state.editora} ></ListaEditoras>
+              <ListaEditoras ></ListaEditoras>
             </div>
           </div>
         </React.Fragment>
       );
     }
   }
-}
+
 
 
 export default Editoras;

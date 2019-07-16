@@ -98,6 +98,26 @@ namespace Ti2_Andre_API.Controllers
             //return CreatedAtAction("GetOneById", new { id = resultado.ID }, resultado);
             return Ok(resultado);
         }
+
+        //delete de 1 comentário
+        // DELETE api/values/5
+        [HttpDelete("Delete/{id}")]
+        public IActionResult DeleteEditora(int id)
+        {
+            var editora = db.Editoras.Find(id);
+            //se nao existir comentário , apresenta uma mensagem de erro 
+            if (editora == null)
+            {
+                return NotFound("Não é possível apagar a editora");
+            }
+
+            // Apagar da BD...
+            db.Editoras.Remove(editora);
+            db.SaveChanges();
+
+            return NoContent();
+        }
+        //------------------------------------------------
         /// <summary>
         /// Devolve o caminho ABSOLUTO para a pasta das fotos dos agentes.
         /// </summary>

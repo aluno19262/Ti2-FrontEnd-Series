@@ -66,10 +66,10 @@ class EditoraCreate extends Component {
                   <input type="text" name ="Nome" id="Nome"></input>
               </div>
               <div className="editora_create_info">
-                  <span>Logo</span>
+                  <span>Imagem</span>
                   <input type="file" name ="Logo" id="Logo"></input>
               </div>
-              <div className="editora_create_info">
+              <div className="editora_create_info_submit">
                   <input type="submit" ></input>
               </div>
               </form>
