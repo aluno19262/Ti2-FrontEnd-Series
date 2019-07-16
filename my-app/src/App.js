@@ -9,6 +9,7 @@ import EpisodiosDetails from './components/EpisodiosDetails';
 import Editoras from './components/Editoras';
 import Pessoas from './components/Pessoas';
 import EditoraCreate from './components/EditoraCreate';
+import EditoraUpdate from './components/EditoraUpdate';
 
 
 class App extends Component {
@@ -37,6 +38,7 @@ class App extends Component {
         <Route path="/Editoras" component={Editoras}></Route>
         <Route path="/Pessoas" component={Pessoas}></Route>
         <Route path="/Editora/Create" component={EditoraCreate}></Route>
+        <Route path="/Editora/Update" component={EditoraUpdate}></Route>
         <Route path="/" ></Route>
       </Router>
     );

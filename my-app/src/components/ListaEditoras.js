@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router,Route, Link } from "react-router-dom";
 import { linkApi } from "./Series.js";
 import '../Style/Editoras.css';
 
@@ -64,7 +65,7 @@ getEditoras(){
       return this.state.editora.map((editora) => (
       <div className="editora_wrapper">
         <div className="editora_delete_btn">
-          <span className="editora_content_edit">✏️</span>
+          <Link className="editora_content_edit" to={{pathname:`/Editora/Update`,state:{id:editora.id}}}>✏️</Link>
           <span className="editora_content_delete" onClick={() => { this.handleClick(editora.id) }}>❌</span>   
         </div>
         <div className="editora_content">

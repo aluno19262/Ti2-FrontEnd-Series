@@ -117,6 +117,34 @@ namespace Ti2_Andre_API.Controllers
 
             return NoContent();
         }
+
+        [HttpPut("Update/{id}")]
+        public IActionResult UpdateEditora(int id, [FromForm] UpdateEditora model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var editora = db.Editoras.Find(id);
+
+            if (editora == null)
+            {
+                return NotFound();
+            }
+
+            // Atualizar...
+            editora.Nome = model.Nome;
+
+            db.Editoras.Update(editora); // OU db.Entry(agente).State = EntityState.Modified;
+
+            db.SaveChanges();
+
+            // Porque sou preguiçoso, vou devolver 204 (No Content)
+            // em vez de 200 OK com os dados.
+            // 204 é como o 200, excepto que não se envia nada no body.
+            return NoContent();
+        }
         //------------------------------------------------
         /// <summary>
         /// Devolve o caminho ABSOLUTO para a pasta das fotos dos agentes.
