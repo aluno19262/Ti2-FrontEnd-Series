@@ -3,31 +3,16 @@ import { BrowserRouter as Router,Route, Link } from "react-router-dom";
 import {linkApi}from "./Series.js";
 import  { Redirect } from 'react-router-dom'
 //ficheiro de css das series
-import '../Style/EditoraCreate.css';
+import '../Style/EditoraUpdate.css';
 
 class EditoraUpdate extends Component {
-    // state = {
-    //     Nome:null,
-    //     Imagem:null,
-    //     Classificacao:null,
-    //     Genero:null
-    //   }
 
-    //   handleChange = () =>{
-        
-    //     const data = new FormData() ;
-    //     data.append('file', this.state.Imagem);
-    //     console.log(data.value);
-    //   }
 
     constructor() {
         super();
         this.state={
             allow:true
         }
-
-        
-        this.handleSubmit = this.handleSubmit.bind(this);
       }
 
     handleSubmit = (evt) => {
@@ -57,19 +42,23 @@ class EditoraUpdate extends Component {
       if(!this.state.allow){
         return <Redirect to="/Editoras" ></Redirect>
       }else{
-          return (       
-          <div className="editora_create_content_wrapper">
+          return (    
+              <React.Fragment>
+                <div className="editora_Update_titulo">Editar Editora</div>
+          <div className="editora_Update_content_wrapper">
               <form encType="multipart/form-data" onSubmit={(evt) => { this.handleSubmit(evt) }}>
-              <div className="editora_create_info">
-                  <span>Nome</span>
+              <div className="editora_Update_info">
+                  <span>Nome :</span>
                   <input type="text" name ="Nome" id="Nome"></input>
               </div>
-              <div className="editora_create_info_submit">
+              <div className="editora_Update_info_submit">
                   <input type="submit" ></input>
               </div>
               </form>
           </div>                           
-        )    
+             
+              </React.Fragment>   
+         )      
       }
   }
 }

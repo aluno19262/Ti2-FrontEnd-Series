@@ -79,3 +79,17 @@ align-items: center;
     cursor:pointer;
     box-shadow: none;
 }
+
+.editora_create_titulo{
+    width: fit-content;
+    display:flex;
+    justify-content: center;
+    text-align: center;
+    font-size:50px;
+    margin:0 auto 36px auto;
+    background-color: goldenrod;
+    border:1px solid black;
+    border-radius:8px;
+    box-shadow: 3px 3px black;
+    padding: 16px;
+}
