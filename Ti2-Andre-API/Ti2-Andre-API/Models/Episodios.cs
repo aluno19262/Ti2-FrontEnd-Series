@@ -29,6 +29,8 @@ namespace Ti2_Andre_API.Models
         public virtual Temporadas Temporadas { get; set; }
 
         public virtual ICollection<Comentarios> ListaDeComentarios { get; set; }
+
+        public virtual ICollection<PessoasEpisodios> PessoasEpisodios { get; set; }
     }
 }
 

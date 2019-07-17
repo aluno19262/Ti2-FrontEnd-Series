@@ -127,6 +127,33 @@ namespace Ti2_Andre_API.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "PessoasEpisodios",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Papel = table.Column<int>(nullable: false),
+                    PessoaFK = table.Column<int>(nullable: false),
+                    EpisodioFK = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PessoasEpisodios", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_PessoasEpisodios_Episodios_EpisodioFK",
+                        column: x => x.EpisodioFK,
+                        principalTable: "Episodios",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_PessoasEpisodios_Pessoas_PessoaFK",
+                        column: x => x.PessoaFK,
+                        principalTable: "Pessoas",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Comentarios_EpisodioFK",
                 table: "Comentarios",
@@ -136,6 +163,16 @@ namespace Ti2_Andre_API.Migrations
                 name: "IX_Episodios_TemporadaFK",
                 table: "Episodios",
                 column: "TemporadaFK");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PessoasEpisodios_EpisodioFK",
+                table: "PessoasEpisodios",
+                column: "EpisodioFK");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PessoasEpisodios_PessoaFK",
+                table: "PessoasEpisodios",
+                column: "PessoaFK");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Series_EditoraFK",
@@ -154,10 +191,13 @@ namespace Ti2_Andre_API.Migrations
                 name: "Comentarios");
 
             migrationBuilder.DropTable(
-                name: "Pessoas");
+                name: "PessoasEpisodios");
 
             migrationBuilder.DropTable(
                 name: "Episodios");
+
+            migrationBuilder.DropTable(
+                name: "Pessoas");
 
             migrationBuilder.DropTable(
                 name: "Temporadas");

@@ -21,6 +21,7 @@ namespace Ti2_Andre_API.Models
         public DbSet<Pessoas> Pessoas { get; set; }
         public DbSet<Editora> Editoras { get; set; }
         public DbSet<Comentarios> Comentarios { get; set; }
+        public DbSet<PessoasEpisodios> PessoasEpisodios { get; set; }
         public object Editora { get; internal set; }
 
         internal object Find(int id)
