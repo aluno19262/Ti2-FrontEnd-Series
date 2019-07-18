@@ -30,20 +30,24 @@ namespace Ti2_Andre_API.Controllers
             IQueryable<Pessoas> queryPessoas = db.Pessoas;
 
             queryPapeis = queryPapeis.Where(e => e.EpisodioFK == id);
-
-
-            var resultado = queryPapeis
+                        var resultado = queryPapeis
                 .Select(a => new
                 {
                     a.PessoaFK,
                 })
                 .ToList();
 
-            queryPessoas = foreach { queryPessoas.Select(m => new { m.Nome, m.Foto, m.ID }).Where(p => p.ID == queryPapeis.id); };
+                queryPessoas = queryPessoas.Select(m => new { m.Nome, m.Foto, m.ID }).Where(p =>p.ID == resultado.Contains(p.ID));
 
+            var resultado2 = queryPessoas
+            .Select(b => new
+            {
+                b.Nome,
+                b.Foto,
+                b.ID
+            }).ToList();
 
-
-            return Ok(resultado);
+            return Ok(resultado2);
         }
 
     }
