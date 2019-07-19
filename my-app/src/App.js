@@ -10,6 +10,8 @@ import Editoras from './components/Editoras';
 import Pessoas from './components/Pessoas';
 import EditoraCreate from './components/EditoraCreate';
 import EditoraUpdate from './components/EditoraUpdate';
+import PessoasEpisodios from './components/PessoasEpisodios';
+import EpisodiosPessoas from './components/EpisodiosPessoas';
 
 
 class App extends Component {
@@ -39,6 +41,9 @@ class App extends Component {
         <Route path="/Pessoas" component={Pessoas}></Route>
         <Route path="/Editora/Create" component={EditoraCreate}></Route>
         <Route path="/Editora/Update" component={EditoraUpdate}></Route>
+        <Route path="/Pessoa/:id/Episodios" component={PessoasEpisodios}></Route>
+        <Route path="/Episodio/:id/Pessoas" component={EpisodiosPessoas}></Route>
+
         <Route path="/" ></Route>
       </Router>
     );

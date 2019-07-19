@@ -88,6 +88,9 @@ class EpisodiosDetails extends Component {
                 </div>
               </div>
             </div>
+            <Link to={{pathname:"/Episodio/"+this.state.id+"/Pessoas",state:{episodio:this.state.episodioDetalhes}}}>
+                <span className="voltarAtras">Ver Pessoas Associadas a Este Episódio</span>
+            </Link>
             <div className="episodios_details_trailer">
               <p>Trailer</p>
               <iframe src={"https://www.youtube.com/embed/" + this.state.episodioDetalhes.trailer} title={this.state.episodioDetalhes.id}></iframe>

@@ -3,7 +3,7 @@ import { BrowserRouter as Router,Route, Link } from "react-router-dom";
 import '../Style/Pessoas.css';
 import { linkApi } from './Series';
 
-class ListaPessoas extends Component {
+class ListaPessoasEpisodios extends Component {
 
 /* 
       Render : representa por cards a lista de Pessoas , contendo os dados vindos da api , 
@@ -12,19 +12,19 @@ class ListaPessoas extends Component {
 */
 
   render() {
-    return this.props.pessoa.map((pessoa) => (
+    return this.props.episodio.map((episodio) => (
           <div className="pessoas_wrapper">
-            <Link to={{pathname:'/Pessoa/'+pessoa.id+'/Episodios',state:{pessoa:pessoa}}} className="pessoas_container">
+            <div to={'/Pessoa/'+episodio.id+'/Episodios'} className="pessoas_container">
               <div className="pessoas_img">
-                <img key={pessoa.id} src={linkApi+"/Imagens/"+pessoa.foto} alt="Não existe Foto"></img>
+                <img key={episodio.id} src={linkApi+"/Imagens/"+episodio.foto} alt="Não existe Foto"></img>
               </div>
               <div className="pessoas_nome">
-                <p>{pessoa.nome} </p>
+                <p>{episodio.nome} </p>
               </div>
-            </Link>
+            </div>
               
           </div>
     ));
   }
 }
-export default ListaPessoas;
+export default ListaPessoasEpisodios;
