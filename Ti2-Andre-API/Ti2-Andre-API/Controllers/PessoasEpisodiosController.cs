@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Ti2_Andre_API.Models;
 
 namespace Ti2_Andre_API.Controllers
@@ -21,35 +16,43 @@ namespace Ti2_Andre_API.Controllers
         }
 
 
-        [HttpGet("Papel/{id}")]
-        public IActionResult GetAll(int id)
+        [HttpGet("PapelEpisodio/{id}")]
+        //id do episodio
+        public IActionResult GetPessoas(int id)
         {
-            //query linq na tabela das PessoasEpisodios
             IQueryable<PessoasEpisodios> queryPapeis = db.PessoasEpisodios;
-            //query linq na tabela das temporadas
             IQueryable<Pessoas> queryPessoas = db.Pessoas;
 
             queryPapeis = queryPapeis.Where(e => e.EpisodioFK == id);
-                        var resultado = queryPapeis
-                .Select(a => new
-                {
-                    a.PessoaFK,
-                })
-                .ToList();
+            var resultado = queryPapeis
+    .Select(a =>
+        a.PessoaFK
+    )
+    .ToList();
 
-                queryPessoas = queryPessoas.Select(m => new { m.Nome, m.Foto, m.ID }).Where(p =>p.ID == resultado.Contains(p.ID));
+            queryPessoas = queryPessoas.Select(m => new Pessoas { Nome = m.Nome, Foto = m.Foto, ID = m.ID }).Where(p => resultado.Contains(p.ID));
 
-            var resultado2 = queryPessoas
-            .Select(b => new
-            {
-                b.Nome,
-                b.Foto,
-                b.ID
-            }).ToList();
-
-            return Ok(resultado2);
+            return Ok(queryPessoas);
         }
 
+        [HttpGet("PapelPessoa/{id}")]
+        //id da Pessoa
+        public IActionResult GetEpisodios(int id)
+        {
+            IQueryable<PessoasEpisodios> queryPapeis = db.PessoasEpisodios;
+            IQueryable<Episodios> queryEpisodios = db.Episodios;
+
+            queryPapeis = queryPapeis.Where(e => e.PessoaFK == id);
+            var resultado = queryPapeis
+    .Select(a =>
+        a.EpisodioFK
+    )
+    .ToList();
+
+            queryEpisodios = queryEpisodios.Select(m => new Episodios { Nome = m.Nome, Numero = m.Numero, ID = m.ID }).Where(p => resultado.Contains(p.ID));
+
+            return Ok(queryEpisodios);
+        }
     }
 
 }
