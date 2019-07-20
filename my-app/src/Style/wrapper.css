@@ -63,3 +63,16 @@ a{
     text-align: center;
     font-size:20px;
 }
+
+.Mensagem_Nao_Existe{
+    text-align: center;
+    border:1px solid black;
+    width: fit-content;
+    margin-right: auto; 
+    margin-left: auto;
+    padding:8px;
+    background-color: goldenrod;
+    border-radius:8px;
+    font-size: 30px;
+    box-shadow: 2px 2px black;
+}

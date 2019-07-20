@@ -88,7 +88,7 @@ class EpisodiosDetails extends Component {
                 </div>
               </div>
             </div>
-            <Link to={{pathname:"/Episodio/"+this.state.id+"/Pessoas",state:{episodio:this.state.episodioDetalhes}}}>
+            <Link className="episodios_details_Link_voltar" to={{pathname:"/Episodio/"+this.state.id+"/Pessoas",state:{episodio:this.state.episodioDetalhes}}}>
                 <span className="voltarAtras">Ver Pessoas Associadas a Este Episódio</span>
             </Link>
             <div className="episodios_details_trailer">

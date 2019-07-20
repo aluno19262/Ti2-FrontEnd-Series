@@ -19,7 +19,8 @@ class EpisodiosPessoas extends Component {
 
     state = {
         isLoaded: false,
-        pessoa: null
+        pessoa: null,
+        episodio:null
     }
 
     /*
@@ -35,6 +36,7 @@ class EpisodiosPessoas extends Component {
             .then(res => res.json())
             .then((data) => {
                 this.setState({
+                    episodio:this.props.location.state.episodio,
                     isLoaded: true,
                     pessoa: data
                 })
@@ -52,18 +54,20 @@ class EpisodiosPessoas extends Component {
                   passando os dados dos episódios e o id da temporada por props
   */
     render() {
+        
         if (!this.state.isLoaded) {
             return <div>Loading...</div>
         } else {
             return (
-                <React.Fragment>
+                
+                <React.Fragment>{console.log(this.state.episodio)}
                     <p className="title">{"Lista de Episódios Associados a "+this.props.location.state.episodio.nome}</p>
                     <div className="wp">
                         <div className="_wrapper">
                             <ListaEpisodiosPessoas key={"serie" + this.state.pessoa.id} pessoa={this.state.pessoa} ></ListaEpisodiosPessoas>
                         </div>
                     </div>
-                    <Link to={"/Episodio/"+ this.props.match.params.id +"/EpisodiosDetails"}>
+                    <Link to={{pathname:"/Episodio/"+ this.props.match.params.id +"/EpisodiosDetails",state:{temporadaId:this.state.episodio.temporadaFK}}}>
                         <span className="voltarAtras">Voltar aos Detalhes do Episódio</span>
                     </Link>
                 </React.Fragment>

@@ -52,19 +52,20 @@ class PessoasEpisodios extends Component {
                   passando os dados dos episódios e o id da temporada por props
   */
     render() {
+        
         if (!this.state.isLoaded) {
             return <div>Loading...</div>
         } else {
             return (
                 <React.Fragment>
-                    <p className="title">{"Lista de Episódios Associados a "+this.props.location.state.pessoa.nome}</p>
+                    <p className="title">{"Lista de Episódios Associados a "+this.props.location.state.pessoa.nome}</p> 
                     <div className="wp">
                         <div className="_wrapper">
                             <ListaPessoasEpisodios key={"serie" + this.state.episodio.id} episodio={this.state.episodio} ></ListaPessoasEpisodios>
                         </div>
                     </div>
                     <Link to={"/Pessoas"}>
-                        <span className="voltarAtras">Voltar à Lista de Pessoas</span>
+                        <span className="voltarAtras">Ver Lista de Pessoas</span>
                     </Link>
                 </React.Fragment>
 

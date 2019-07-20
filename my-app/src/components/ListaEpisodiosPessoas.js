@@ -13,10 +13,11 @@ class ListaEpisodiosPessoas extends Component {
 
 
   render() {
+    console.log("depois disto dá erro ", this.props.pessoa)
       if(this.props.pessoa.length!=0){
           return this.props.pessoa.map((pessoa) => (
           <div className="pessoas_wrapper">
-            <div to={'/Pessoa/'+pessoa.id+'/Episodios'} className="pessoas_container">
+            <Link to={{pathname:"/Pessoa/"+pessoa.pessoasEpisodios[0].pessoaFK+"/Episodios",state :{pessoa:this.props.pessoa}}} className="pessoas_container">
             <div className="pessoas_nome">
                 {(()=>{if(pessoa.pessoasEpisodios[0].papel==0){
                     return <p>Ator</p>
@@ -29,14 +30,14 @@ class ListaEpisodiosPessoas extends Component {
                 <img key={pessoa.id} src={linkApi+"/Imagens/"+pessoa.foto} alt="Não existe Foto"></img>
               </div>
               <div className="pessoas_nome">
-                <Link to={{pathname:"/Pessoa/"+pessoa.id+"/Episodios",state :{pessoa:pessoa}}}>{pessoa.nome} </Link>
+                <p>{pessoa.nome} </p>
               </div>
-            </div>
+            </Link>
               
           </div>
     )); 
       }else{
-          return <p>Não existem Pessoas Associadas a este Episódio</p>
+          return <p className="Mensagem_Nao_Existe">Não existem Pessoas Associadas a este Episódio</p>
       }
      
   }

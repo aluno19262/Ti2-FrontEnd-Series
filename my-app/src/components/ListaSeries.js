@@ -17,7 +17,8 @@ class ListaSeries extends Component {
 */
 
   render() {
-    return (       
+    if(this.props.serie.length!=0){
+      return (       
         this.props.serie.map((serie) => ( 
           <div className="series_content_wrapper">
             <Link to={`/Serie/${serie.id}/Temporadas`}>
@@ -34,6 +35,10 @@ class ListaSeries extends Component {
         )      
       )
     )
+    }else{
+      return <p className="Mensagem_Nao_Existe">Não Existem Séries Disponíveis</p>
+    }
+    
   }
 }
 export default ListaSeries;

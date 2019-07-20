@@ -17,7 +17,8 @@ class ListaTemporadas extends Component {
   */
 
   render() {
-    return (
+    if(this.props.temporada.length!=0){
+       return (
       this.props.temporada.map((temporada) => (
         <div className="temporada_wrapper">
           <Link to={{ pathname: `/Temporada/${temporada.id}/Episodios`, state: { serie: this.props.serie } }} >
@@ -36,6 +37,10 @@ class ListaTemporadas extends Component {
         </div>
       )
       ));
+    }else{
+      return <p className="Mensagem_Nao_Existe">Não Existem Temporadas Para Esta Série</p>
+    }
+   
   }
 }
 export default ListaTemporadas;

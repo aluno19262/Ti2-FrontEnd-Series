@@ -24,6 +24,14 @@
     height:100%;
 }
 
+.episodios_details_Link_voltar{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 24px;
+    
+ }
+
 .episodios_details_content_img{
     width:33.33%;
     height: 100%;
@@ -56,6 +64,7 @@
 
 .episodios_details_content_info_sinopse{
     height: 80%;
+    text-align: justify;
 }
 
 .episodios_details_trailer{

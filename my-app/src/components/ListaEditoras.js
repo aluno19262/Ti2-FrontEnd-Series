@@ -6,6 +6,13 @@ import '../Style/Editoras.css';
 
 
 class ListaEditoras extends Component {
+/*
+    state:
+      - isLoaded : permite o html nao seja carregado sem que o fetch dos dados esteja completo
+            - false : bloqueia
+            - true : autoriza
+      - editora : containner para os dados vindos da api ,em que cada registo é 1 editora
+*/
 
   state = {
     isLoaded: false,

@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Ti2_Andre_API.Models;
+using Ti2_Andre_API.ViewModels;
 using static Ti2_Andre_API.Models.PessoasEpisodios;
 
 namespace Ti2_Andre_API.Controllers
@@ -49,11 +51,11 @@ namespace Ti2_Andre_API.Controllers
 
 
         [HttpGet("PapelEpisodio/{id}")]
-        //id da Pessoa
+        //id do Episódio
         public IActionResult GetEpisodios(int id)
         {
 
-            var resultado = db.Episodios.Where(e => e.ID == id).SelectMany(e => e.PessoasEpisodios).Select(papel => new Pessoas { ID = papel.ID, Nome = papel.Pessoa.Nome, Foto = papel.Pessoa.Foto ,PessoasEpisodios = papel.Pessoa.PessoasEpisodios });
+            var resultado = db.Episodios.Where(e => e.ID == id).SelectMany(e => e.PessoasEpisodios).Select(papel => new ListaPessoas { ID = papel.ID, Nome = papel.Pessoa.Nome, Foto = papel.Pessoa.Foto , ListaEpisodiosPessoas = papel.Pessoa.PessoasEpisodios.Select(p => new ListaEpisodiosPessoas { Papel = Enum.GetName(typeof(TipoDePapel),p.Papel),EpisodioFK=p.EpisodioFK,PessoaFK=p.PessoaFK }).ToList()});
 
             return Ok(resultado);
         }

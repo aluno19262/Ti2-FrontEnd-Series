@@ -77,7 +77,7 @@ class Episodios extends Component {
       
     }else{
       return <React.Fragment>
-              <p>Não Existem Episódios</p>
+              <p className="Mensagem_Nao_Existe">Não Existem Episódios</p>
       <Link to={"/Serie/"+ this.props.location.state.serie+"/Temporadas"}>
             <span className="voltarAtras">Voltar à Lista de Temporadas</span>
         </Link>
