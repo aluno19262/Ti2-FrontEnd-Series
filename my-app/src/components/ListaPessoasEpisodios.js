@@ -15,11 +15,15 @@ class ListaPessoasEpisodios extends Component {
     return this.props.episodio.map((episodio) => (
           <div className="pessoas_wrapper">
             <div to={'/Pessoa/'+episodio.id+'/Episodios'} className="pessoas_container">
+              <div>
+                <Link to={"/Serie/"+ episodio.temporadas.series.id +"/Temporadas"}>{episodio.temporadas.series.nome}</Link>
+                <Link to={{pathname:"/Temporada/"+ episodio.temporadas.id +"/Episodios",state:{serie:episodio.temporadas.series.id}}}>{episodio.temporadas.nome}</Link>
+              </div>
               <div className="pessoas_img">
                 <img key={episodio.id} src={linkApi+"/Imagens/"+episodio.foto} alt="Não existe Foto"></img>
               </div>
               <div className="pessoas_nome">
-                <p>{episodio.nome} </p>
+                <Link  to={{pathname:"/Episodio/"+ episodio.id +"/EpisodiosDetails",state:{serieId:episodio.temporadas.series.id,temporadaid:episodio.temporadas.id}}}>{episodio.nome} </Link>
               </div>
             </div>
               

@@ -29,7 +29,7 @@ class ListaEpisodiosPessoas extends Component {
                 <img key={pessoa.id} src={linkApi+"/Imagens/"+pessoa.foto} alt="Não existe Foto"></img>
               </div>
               <div className="pessoas_nome">
-                <p>{pessoa.nome} </p>
+                <Link to={{pathname:"/Pessoa/"+pessoa.id+"/Episodios",state :{pessoa:pessoa}}}>{pessoa.nome} </Link>
               </div>
             </div>
               
