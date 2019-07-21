@@ -19,7 +19,7 @@ class ListaPessoasEpisodios extends Component {
     return this.props.episodio.map((episodio) => (
           <div className="pessoas_wrapper">
            <Link to={{pathname:"/Episodio/"+ episodio.id +"/EpisodiosDetails",state:{serieId:episodio.temporadas.series.id,temporadaid:episodio.temporadas.id}}} className="pessoas_container">
-              <div class="pessoas_episodios_links">
+              <div className="pessoas_episodios_links">
                 <Link to={"/Serie/"+ episodio.temporadas.series.id +"/Temporadas"}>{"Série : "+episodio.temporadas.series.nome}</Link>
                 <Link to={{pathname:"/Temporada/"+ episodio.temporadas.id +"/Episodios",state:{serie:episodio.temporadas.series.id}}}>{"Temporada : "+episodio.temporadas.nome}</Link>
               </div>

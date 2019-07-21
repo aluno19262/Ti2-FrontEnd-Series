@@ -60,7 +60,7 @@ class EpisodiosPessoas extends Component {
         } else {
             return (
                 
-                <React.Fragment>{console.log(this.state.episodio)}
+                <React.Fragment>{console.log(this.state.pessoa)}
                     <p className="title">{"Lista de Episódios Associados a "+this.props.location.state.episodio.nome}</p>
                     <div className="wp">
                         <div className="_wrapper">

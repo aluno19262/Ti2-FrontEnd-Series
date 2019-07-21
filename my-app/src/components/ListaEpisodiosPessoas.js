@@ -17,14 +17,9 @@ class ListaEpisodiosPessoas extends Component {
       if(this.props.pessoa.length!=0){
           return this.props.pessoa.map((pessoa) => (
           <div className="pessoas_wrapper">
-            <Link to={{pathname:"/Pessoa/"+pessoa.pessoasEpisodios[0].pessoaFK+"/Episodios",state :{pessoa:this.props.pessoa}}} className="pessoas_container">
+            <Link to={{pathname:"/Pessoa/"+pessoa.listaEpisodiosPessoas[0].pessoaFK+"/Episodios",state :{pessoa:this.props.pessoa}}} className="pessoas_container">
             <div className="pessoas_nome">
-                {(()=>{if(pessoa.pessoasEpisodios[0].papel==0){
-                    return <p>Ator</p>
-                }else{
-                    return <p>Realizador</p>
-                }
-                })()}
+              <p>{pessoa.listaEpisodiosPessoas[0].papel}</p>
               </div>
               <div className="pessoas_img">
                 <img key={pessoa.id} src={linkApi+"/Imagens/"+pessoa.foto} alt="Não existe Foto"></img>

@@ -103,6 +103,10 @@ div p{
     margin:24px;
 }
 
+.comentario p{
+    text-align: justify;
+}
+
 
 
 
