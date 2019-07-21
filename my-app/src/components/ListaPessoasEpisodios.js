@@ -6,12 +6,11 @@ import { linkApi } from './Series';
 class ListaPessoasEpisodios extends Component {
 
 /* 
-      Render : representa por cards a lista de Pessoas , contendo os dados vindos da api , 
-                passados pelo componente Pessoas (componente pai), esses dados são :
-                o nome da Pessoa e a imagem da Pessoa
-                
-                
-                className="pessoas_container"
+      Render : representa os episódios que aquela pessoa em especifico está 
+               presente, 1 por card com links para a temporada desse episódio
+               e a série desse episódio, uma imagem e o nome do episódio
+               caso nao exista episódios para aquela pessoa, é apresentada 
+               1 mensagem a avisar do mesmo
 */
 
   render() {

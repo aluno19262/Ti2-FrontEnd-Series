@@ -9,20 +9,13 @@ namespace Ti2_Andre_API.ViewModels
 {
     public class CreateEditora : IValidatableObject
     {
+        //class auxiliar para criar uma Editora
         [Required]
         public string Nome { get; set; }
 
         [Required]
         public IFormFile Logo { get; set; }
 
-        /// <summary>
-        /// Este método é chamado pelo MVC/Web API 
-        /// DEPOIS das validações das anotações ([Required], [RegularExpression], ...)
-        /// Para permitir validações mais complicadas.
-        /// Aqui, uso o "yield return" do C# para disponibilizar vários erros de uma só vez.
-        /// </summary>
-        /// <param name="validationContext"></param>
-        /// <returns></returns>
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             // Validar a fotografia (só "permito" JPGs)

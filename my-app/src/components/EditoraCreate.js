@@ -6,6 +6,10 @@ import { Redirect } from 'react-router-dom'
 import '../Style/EditoraCreate.css';
 
 class EditoraCreate extends Component {
+
+    //  state : 
+    //      allow : true para apresentar o formulario para criar uma editora
+    //              false para fazer redirect para a pagina das editoras (quando é criado com sucesso)
     constructor() {
         super();
         this.state = {
@@ -13,6 +17,12 @@ class EditoraCreate extends Component {
         }
     }
 
+    /* 
+        fetch para criar uma editora dando-lhe os dados do formulário
+            - Se tudo correr com sucesso, é dada uma mensagem na consola com a resposta da api
+              e a variavel this.state.allow é tornada false para poder voltar á página das editoras
+            - Se algo não correr como previsto, é enviada 1 mensagem para a consola com o erro
+    */
     handleSubmit = (evt) => {
         evt.preventDefault()
         const url = linkApi + '/api/values/Editoras/Create'
@@ -36,6 +46,8 @@ class EditoraCreate extends Component {
             });
     }
 
+    // Se allow = true : Mostra o formulário para criar a editora
+    // Se allow = false : faz redirect para a pagina das editoras
     render() {
         if (!this.state.allow) {
             return <Redirect to="/Editoras" ></Redirect>

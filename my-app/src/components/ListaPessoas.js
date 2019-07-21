@@ -8,7 +8,8 @@ class ListaPessoas extends Component {
 /* 
       Render : representa por cards a lista de Pessoas , contendo os dados vindos da api , 
                 passados pelo componente Pessoas (componente pai), esses dados são :
-                o nome da Pessoa e a imagem da Pessoa
+                o nome da Pessoa e a imagem da Pessoa, sendo cada card 1 link para os 
+                episódios que essa pessoa está presente
 */
 
   render() {

@@ -54,10 +54,11 @@ class Episodios extends Component {
           true : apresenta um titulo , um botao para voltar ás temporadas e chama o componente 
                   ListaEpisodios , que apresenta todos os episódios (1 card por temporada) no ecra
                   passando os dados dos episódios e o id da temporada por props
+      
+      - this.state.episodio.lenght > 0 (se existem episodios) : apresenta os episódios 
+        else : apresenta 1 mensagem para informar que nao há episódios e 1 botão para voltar para as Temporadas
   */
   render() {
-
-
     if (!this.state.isLoaded) {
       return <div>Loading...</div>
     } else if(this.state.episodio.length >0){

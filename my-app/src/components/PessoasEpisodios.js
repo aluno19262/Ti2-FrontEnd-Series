@@ -9,12 +9,10 @@ class PessoasEpisodios extends Component {
 
     /*
      state:
-          - id : guarda o id da série dos episódios
           - isLoaded : permite o html nao seja carregado sem que o fetch dos dados esteja completo
                 - false : bloqueia
                 - true : autoriza
-          - episodio : containner para os dados vindos da api ,em que cada registo é 1 episódio
-          - temporadaid : guarda o id da temporada dos Episodios
+          - episodio : containner para os dados vindos da api ,em que cada registo é 1 episódio        
     */
 
     state = {
@@ -24,10 +22,10 @@ class PessoasEpisodios extends Component {
 
     /*
       fetch : faz o pedido de get à api e guarda os dados no state com setstate:
-                  - temporadaid : guarda o id da temporada
-                  - id : guarda o id da serie
                   - isLoaded : permissao para representar os dados (funçao equivalente ao await)
                   - episodio : guarda os registos da tabela episodios 
+
+            caso erro : devolve o erro na consola
     */
 
     componentDidMount() {

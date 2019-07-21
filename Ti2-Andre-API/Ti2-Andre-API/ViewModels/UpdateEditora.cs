@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ti2_Andre_API.ViewModels
 {
+    //class auxiliar para fazer editde uma editora
     public class UpdateEditora
     {
         [Required]

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace Ti2_Andre_API.ViewModels
 {
+    //class auxiliar á queri que disponibiliza os episódios associados a 1 pessoa
     public class ListaPessoas
     {
         public int ID { get; set; }

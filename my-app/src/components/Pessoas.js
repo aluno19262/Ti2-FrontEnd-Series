@@ -6,26 +6,29 @@ import { linkApi } from './Series';
 
 class Pessoas extends Component {
 
-/*
-    state:
-      - isLoaded : permite o html nao seja carregado sem que o fetch dos dados esteja completo
-            - false : bloqueia
-            - true : autoriza
-      - editora : containner para os dados vindos da api ,em que cada registo é 1 editora
-*/
+  /*
+      state:
+        - isLoaded : permite o html nao seja carregado sem que o fetch dos dados esteja completo
+              - false : bloqueia
+              - true : autoriza
+        - pessoa : containner para os dados vindos da api ,em que cada registo é 1 pessoa
+  */
 
   state = {
     isLoaded: false,
     pessoa: null,
   }
 
-/* 
-    fetch : faz o pedido get à api e guarda os dados das editoras no state com setState:
-                - isLoaded : premissao para disponibilizar o html 
-                - pessoa : guarda os dados relativos ás Pessoas (todos os registos da bd das Pessoas)
-*/
+  /* 
+      fetch : faz o pedido get à api e guarda os dados das pessoas no state com setState:
+                  - isLoaded : premissao para disponibilizar o html 
+                  - pessoa : guarda os dados relativos ás Pessoas (todos os registos da bd das Pessoas)
+
+            caso sucesso : faz setState das variaveis acima descritas
+            caso erro : mostra na consola o erro
+  */
   componentDidMount() {
-    fetch(linkApi+'/api/values/Pessoas')
+    fetch(linkApi + '/api/values/Pessoas')
       .then(res => res.json())
       .then((data) => {
         this.setState({
@@ -59,12 +62,9 @@ class Pessoas extends Component {
             </div>
           </div>
         </React.Fragment>
-
-
       );
     }
   }
 }
-
 
 export default Pessoas;

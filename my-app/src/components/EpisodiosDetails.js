@@ -15,7 +15,6 @@ class EpisodiosDetails extends Component {
           - id : guarda o id do episódio 
           - comentario : guarda o texto do comentário
           - tempId : guarda o id da temporada
-          - com e newComent sao variáveis auxiliares
   */
 
   constructor(props) {
@@ -26,8 +25,6 @@ class EpisodiosDetails extends Component {
       id: this.props.match.params.id,
       comentario: null,
       tempId: null,
-      com: true,
-      newComent:false
     };
   }
 
